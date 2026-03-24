@@ -1,0 +1,738 @@
+INFO:     Will watch for changes in these directories: ['/Users/ali/Desktop/CircuitSimulation/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [4958] using WatchFiles
+INFO:     Started server process [5200]
+INFO:     Waiting for application startup.
+[2m2026-03-09T20:32:12.939881Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_starting        [0m [[0m[1m[34mapp.main[0m][0m [36menv[0m=[35mdevelopment[0m
+2026-03-09 23:32:24,814 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+[2m2026-03-09T20:32:24.814918Z[0m [[32m[1minfo     [0m] [1mselect pg_catalog.version()   [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:32:24,814 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:32:24.815048Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:32:24,818 INFO sqlalchemy.engine.Engine select current_schema()
+[2m2026-03-09T20:32:24.818420Z[0m [[32m[1minfo     [0m] [1mselect current_schema()       [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:32:24,818 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:32:24.818491Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:32:24,821 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+[2m2026-03-09T20:32:24.821151Z[0m [[32m[1minfo     [0m] [1mshow standard_conforming_strings[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:32:24,821 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:32:24.821216Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:32:24,822 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:32:24.822642Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:32:24,824 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:32:24.824563Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:32:24,824 INFO sqlalchemy.engine.Engine [generated in 0.00020s] ('queued', '58e15eb0-a801-411c-8137-c4ce0f716731', None, '{"id": "d790bbe7-1a6a-4966-a777-269bf426342e", "naturalLanguagePrompt": "Testing the connection", "category": "op-amp", "supplyVoltage": 1.8, "technology": "TSMC 180nm", "temperature": 27.0, "createdAt": "2026-03-09T20:32:24.759754+00:00", "constraints": []}', '[]', None, None, None, None, None, '95048205-5ce7-410c-a7d7-7741dffd2d89', datetime.datetime(2026, 3, 9, 20, 32, 24, 824452, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 32, 24, 824454, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:32:24.824661Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00020s] ('queued', '58e15eb0-a801-411c-8137-c4ce0f716731', None, '{"id": "d790bbe7-1a6a-4966-a777-269bf426342e", "naturalLanguagePrompt": "Testing the connection", "category": "op-amp", "supplyVoltage": 1.8, "technology": "TSMC 180nm", "temperature": 27.0, "createdAt": "2026-03-09T20:32:24.759754+00:00", "constraints": []}', '[]', None, None, None, None, None, '95048205-5ce7-410c-a7d7-7741dffd2d89', datetime.datetime(2026, 3, 9, 20, 32, 24, 824452, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 32, 24, 824454, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:32:24,828 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:32:24.829021Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+[2m2026-03-09T20:32:24.870368Z[0m [[32m[1mdebug    [0m] [1m
+def accumulate(self, *args, **kwargs):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:32:24.871483Z[0m [[32m[1mdebug    [0m] [1m
+def run_design_pipeline(self, run_id):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:32:24.871633Z[0m [[32m[1mdebug    [0m] [1m
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:32:24.871755Z[0m [[32m[1mdebug    [0m] [1m
+def chunks(task, it, n):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:32:24.872876Z[0m [[32m[1mdebug    [0m] [1m
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:32:24.873024Z[0m [[32m[1mdebug    [0m] [1m
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:32:24.873144Z[0m [[32m[1mdebug    [0m] [1m
+def xmap(task, it):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:32:24.873240Z[0m [[32m[1mdebug    [0m] [1m
+def backend_cleanup():
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:32:24.873334Z[0m [[32m[1mdebug    [0m] [1m
+def chain(*args, **kwargs):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:32:24.873418Z[0m [[32m[1mdebug    [0m] [1m
+def xstarmap(task, it):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:32:24.876221Z[0m [[33m[1mwarning  [0m] [1mNo hostname was supplied. Reverting to default 'localhost'[0m [[0m[1m[34mkombu.connection[0m][0m
+[2m2026-03-09T20:32:25.486525Z[0m [[31m[1merror    [0m] [1munhandled_exception           [0m [[0m[1m[34merrors[0m][0m
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+           ^^^^^^^^^^^^^^
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 87, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 130, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 116, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 324, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/api/v1/runs.py", line 98, in create_run
+    run_design_pipeline.apply_async(args=[run_id], task_id=str(uuid.uuid4()))
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/task.py", line 608, in apply_async
+    return app.send_task(
+           ^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/base.py", line 947, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/amqp.py", line 559, in send_task_message
+    ret = producer.publish(
+          ^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+           ^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+              ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+                              ^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+                             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 61] Connection refused
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+           ^^^^^^^^^^^^^^
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/applications.py", line 1160, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 87, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 130, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 116, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 324, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/api/v1/runs.py", line 98, in create_run
+    run_design_pipeline.apply_async(args=[run_id], task_id=str(uuid.uuid4()))
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/task.py", line 608, in apply_async
+    return app.send_task(
+           ^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/base.py", line 947, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/amqp.py", line 559, in send_task_message
+    ret = producer.publish(
+          ^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+           ^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+              ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+                              ^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+                             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 61] Connection refused
+WARNING:  WatchFiles detected changes in 'app/api/v1/runs.py'. Reloading...
+[2m2026-03-09T20:33:14.987653Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_shutdown        [0m [[0m[1m[34mapp.main[0m][0m
+INFO:     Started server process [5865]
+INFO:     Waiting for application startup.
+[2m2026-03-09T20:33:15.796401Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_starting        [0m [[0m[1m[34mapp.main[0m][0m [36menv[0m=[35mdevelopment[0m
+WARNING:  WatchFiles detected changes in 'app/api/v1/runs.py'. Reloading...
+[2m2026-03-09T20:33:24.687896Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_shutdown        [0m [[0m[1m[34mapp.main[0m][0m
+INFO:     Started server process [5877]
+INFO:     Waiting for application startup.
+[2m2026-03-09T20:33:25.512187Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_starting        [0m [[0m[1m[34mapp.main[0m][0m [36menv[0m=[35mdevelopment[0m
+2026-03-09 23:33:35,567 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+[2m2026-03-09T20:33:35.567223Z[0m [[32m[1minfo     [0m] [1mselect pg_catalog.version()   [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:35,567 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:33:35.567344Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:35,572 INFO sqlalchemy.engine.Engine select current_schema()
+[2m2026-03-09T20:33:35.572077Z[0m [[32m[1minfo     [0m] [1mselect current_schema()       [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:35,572 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:33:35.572146Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:35,574 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+[2m2026-03-09T20:33:35.574848Z[0m [[32m[1minfo     [0m] [1mshow standard_conforming_strings[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:35,574 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:33:35.574938Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:35,576 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:33:35.576160Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:35,578 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:33:35.578225Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:35,578 INFO sqlalchemy.engine.Engine [generated in 0.00021s] ('queued', 'c158207c-30dd-4d9b-a7f9-07035a155bf1', None, '{"id": "d7009ab9-b0ec-4f40-8afe-129a562e7fcb", "naturalLanguagePrompt": "Testing the connection again", "category": "op-amp", "supplyVoltage": 1.8, "technology": "TSMC 180nm", "temperature": 27.0, "createdAt": "2026-03-09T20:33:35.509660+00:00", "constraints": []}', '[]', None, None, None, None, None, '2f7cb9bc-ca8f-4447-a6d9-8f36e484ee62', datetime.datetime(2026, 3, 9, 20, 33, 35, 578114, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 33, 35, 578116, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:33:35.578319Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00021s] ('queued', 'c158207c-30dd-4d9b-a7f9-07035a155bf1', None, '{"id": "d7009ab9-b0ec-4f40-8afe-129a562e7fcb", "naturalLanguagePrompt": "Testing the connection again", "category": "op-amp", "supplyVoltage": 1.8, "technology": "TSMC 180nm", "temperature": 27.0, "createdAt": "2026-03-09T20:33:35.509660+00:00", "constraints": []}', '[]', None, None, None, None, None, '2f7cb9bc-ca8f-4447-a6d9-8f36e484ee62', datetime.datetime(2026, 3, 9, 20, 33, 35, 578114, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 33, 35, 578116, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:35,581 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:33:35.581672Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:43,068 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:33:43.068870Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:43,070 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:33:43.070317Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:43,070 INFO sqlalchemy.engine.Engine [generated in 0.00015s] ('2f7cb9bc-ca8f-4447-a6d9-8f36e484ee62',)
+[2m2026-03-09T20:33:43.070398Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00015s] ('2f7cb9bc-ca8f-4447-a6d9-8f36e484ee62',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:33:43,075 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:33:43.075813Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:34:19,252 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:34:19.252239Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:34:19,252 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:34:19.252482Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:34:19,252 INFO sqlalchemy.engine.Engine [cached since 43.68s ago] ('queued', 'ecd2bf72-1f99-4d8d-b699-988d4de323ff', None, '{"id": "d58653f5-13b4-4756-a0ff-17f0b621b835", "naturalLanguagePrompt": "Testing the queueing", "category": "op-amp", "supplyVoltage": 1.8, "technology": "TSMC 180nm", "temperature": 27.0, "createdAt": "2026-03-09T20:34:19.250729+00:00", "constraints": []}', '[]', None, None, None, None, None, '13ce98e7-4c61-4072-a450-787734755259', datetime.datetime(2026, 3, 9, 20, 34, 19, 252406, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 34, 19, 252408, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:34:19.252567Z[0m [[32m[1minfo     [0m] [1m[cached since 43.68s ago] ('queued', 'ecd2bf72-1f99-4d8d-b699-988d4de323ff', None, '{"id": "d58653f5-13b4-4756-a0ff-17f0b621b835", "naturalLanguagePrompt": "Testing the queueing", "category": "op-amp", "supplyVoltage": 1.8, "technology": "TSMC 180nm", "temperature": 27.0, "createdAt": "2026-03-09T20:34:19.250729+00:00", "constraints": []}', '[]', None, None, None, None, None, '13ce98e7-4c61-4072-a450-787734755259', datetime.datetime(2026, 3, 9, 20, 34, 19, 252406, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 34, 19, 252408, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:34:19,253 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:34:19.253515Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:26,548 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:37:26.549819Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:26,551 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:37:26.551846Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:26,552 INFO sqlalchemy.engine.Engine [cached since 231s ago] ('queued', '2cf2b235-0fa1-4626-a988-4b1c2242db0a', None, '{"id": "76f50c8b-ec0c-4e4c-bcda-fc1e94631ece", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "9dee5136-b01a-4cea-85f0-f87fdf22caa1", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, 'fe3a530a-a1df-4ce9-8437-5c4d3fa6a9ab', datetime.datetime(2026, 3, 9, 20, 37, 26, 551241, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 37, 26, 551245, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:37:26.552504Z[0m [[32m[1minfo     [0m] [1m[cached since 231s ago] ('queued', '2cf2b235-0fa1-4626-a988-4b1c2242db0a', None, '{"id": "76f50c8b-ec0c-4e4c-bcda-fc1e94631ece", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "9dee5136-b01a-4cea-85f0-f87fdf22caa1", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, 'fe3a530a-a1df-4ce9-8437-5c4d3fa6a9ab', datetime.datetime(2026, 3, 9, 20, 37, 26, 551241, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 37, 26, 551245, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:26,556 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:37:26.556358Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:28,581 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:37:28.582128Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:28,582 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:37:28.582952Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:28,583 INFO sqlalchemy.engine.Engine [cached since 225.5s ago] ('fe3a530a-a1df-4ce9-8437-5c4d3fa6a9ab',)
+[2m2026-03-09T20:37:28.583135Z[0m [[32m[1minfo     [0m] [1m[cached since 225.5s ago] ('fe3a530a-a1df-4ce9-8437-5c4d3fa6a9ab',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:28,587 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:37:28.587289Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:42,508 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:37:42.508272Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:42,508 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:37:42.508956Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:42,509 INFO sqlalchemy.engine.Engine [cached since 246.9s ago] ('queued', '61aab14b-cd3f-4e07-95c7-6f59b1f58433', None, '{"id": "ff65e4ed-3af1-4d7b-8067-18353a66382d", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "d6195871-8e8c-4a59-9764-4cd57499b6f0", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, '9227a4b4-501a-4015-af28-fa527465438b', datetime.datetime(2026, 3, 9, 20, 37, 42, 508767, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 37, 42, 508776, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:37:42.509154Z[0m [[32m[1minfo     [0m] [1m[cached since 246.9s ago] ('queued', '61aab14b-cd3f-4e07-95c7-6f59b1f58433', None, '{"id": "ff65e4ed-3af1-4d7b-8067-18353a66382d", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "d6195871-8e8c-4a59-9764-4cd57499b6f0", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, '9227a4b4-501a-4015-af28-fa527465438b', datetime.datetime(2026, 3, 9, 20, 37, 42, 508767, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 37, 42, 508776, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:42,511 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:37:42.511336Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:44,528 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:37:44.528802Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:44,529 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:37:44.529483Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:44,529 INFO sqlalchemy.engine.Engine [cached since 241.5s ago] ('9227a4b4-501a-4015-af28-fa527465438b',)
+[2m2026-03-09T20:37:44.529682Z[0m [[32m[1minfo     [0m] [1m[cached since 241.5s ago] ('9227a4b4-501a-4015-af28-fa527465438b',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:44,533 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:37:44.533988Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:49,285 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:37:49.286058Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:49,286 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:37:49.286574Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:49,286 INFO sqlalchemy.engine.Engine [cached since 253.7s ago] ('queued', '93556f74-5f71-4fe5-9bf8-c1f79f5b6415', None, '{"id": "0c57d9fa-edb8-4b8d-8922-aad549a40587", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "46e014a4-6b65-4564-b1d0-2a580874de83", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, 'ff631239-9670-40e3-b403-011990e0265f', datetime.datetime(2026, 3, 9, 20, 37, 49, 286400, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 37, 49, 286403, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:37:49.286759Z[0m [[32m[1minfo     [0m] [1m[cached since 253.7s ago] ('queued', '93556f74-5f71-4fe5-9bf8-c1f79f5b6415', None, '{"id": "0c57d9fa-edb8-4b8d-8922-aad549a40587", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "46e014a4-6b65-4564-b1d0-2a580874de83", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, 'ff631239-9670-40e3-b403-011990e0265f', datetime.datetime(2026, 3, 9, 20, 37, 49, 286400, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 37, 49, 286403, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:49,288 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:37:49.289094Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:51,391 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:37:51.391212Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:51,391 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:37:51.391606Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:51,391 INFO sqlalchemy.engine.Engine [cached since 248.3s ago] ('ff631239-9670-40e3-b403-011990e0265f',)
+[2m2026-03-09T20:37:51.391776Z[0m [[32m[1minfo     [0m] [1m[cached since 248.3s ago] ('ff631239-9670-40e3-b403-011990e0265f',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:37:51,394 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:37:51.394354Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:38:31,387 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:38:31.387250Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:38:31,387 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:38:31.387799Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:38:31,387 INFO sqlalchemy.engine.Engine [cached since 295.8s ago] ('queued', '8d9cc8d6-d23c-4a9d-8fcb-756b839ffa03', None, '{"id": "4df08a19-4497-4d23-844d-ecb778da319f", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "7d5548f3-9175-44a9-8bf5-ff54ff2e7e35", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, 'dd60777a-e260-4afb-b2e1-23f45d86666d', datetime.datetime(2026, 3, 9, 20, 38, 31, 387595, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 38, 31, 387598, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:38:31.388037Z[0m [[32m[1minfo     [0m] [1m[cached since 295.8s ago] ('queued', '8d9cc8d6-d23c-4a9d-8fcb-756b839ffa03', None, '{"id": "4df08a19-4497-4d23-844d-ecb778da319f", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "7d5548f3-9175-44a9-8bf5-ff54ff2e7e35", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, 'dd60777a-e260-4afb-b2e1-23f45d86666d', datetime.datetime(2026, 3, 9, 20, 38, 31, 387595, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 38, 31, 387598, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:38:31,390 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:38:31.390353Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:38:33,414 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:38:33.414322Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:38:33,414 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:38:33.414842Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:38:33,414 INFO sqlalchemy.engine.Engine [cached since 290.4s ago] ('dd60777a-e260-4afb-b2e1-23f45d86666d',)
+[2m2026-03-09T20:38:33.414994Z[0m [[32m[1minfo     [0m] [1m[cached since 290.4s ago] ('dd60777a-e260-4afb-b2e1-23f45d86666d',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:38:33,417 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:38:33.417936Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:39:02,022 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:39:02.023428Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:39:02,024 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:39:02.024207Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:39:02,024 INFO sqlalchemy.engine.Engine [cached since 326.5s ago] ('queued', '085cb4c3-3fcf-4f39-b94b-5a259dccce87', None, '{"id": "61fcc495-37e9-4ba7-b01b-500c0c0b3f80", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "83dfc81d-2994-4a49-8288-86361921500c", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, '75fd0c9a-077a-467e-bf1e-cb3d0a95f27a', datetime.datetime(2026, 3, 9, 20, 39, 2, 23986, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 39, 2, 23989, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:39:02.024425Z[0m [[32m[1minfo     [0m] [1m[cached since 326.5s ago] ('queued', '085cb4c3-3fcf-4f39-b94b-5a259dccce87', None, '{"id": "61fcc495-37e9-4ba7-b01b-500c0c0b3f80", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "83dfc81d-2994-4a49-8288-86361921500c", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, '75fd0c9a-077a-467e-bf1e-cb3d0a95f27a', datetime.datetime(2026, 3, 9, 20, 39, 2, 23986, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 39, 2, 23989, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:39:02,026 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:39:02.027124Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:39:04,044 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:39:04.044295Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:39:04,044 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:39:04.044974Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:39:04,045 INFO sqlalchemy.engine.Engine [cached since 321s ago] ('75fd0c9a-077a-467e-bf1e-cb3d0a95f27a',)
+[2m2026-03-09T20:39:04.045210Z[0m [[32m[1minfo     [0m] [1m[cached since 321s ago] ('75fd0c9a-077a-467e-bf1e-cb3d0a95f27a',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:39:04,049 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:39:04.050078Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+WARNING:  WatchFiles detected changes in 'app/workers/celery_app.py'. Reloading...
+[2m2026-03-09T20:39:58.501214Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_shutdown        [0m [[0m[1m[34mapp.main[0m][0m
+INFO:     Started server process [7957]
+INFO:     Waiting for application startup.
+[2m2026-03-09T20:39:59.369621Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_starting        [0m [[0m[1m[34mapp.main[0m][0m [36menv[0m=[35mdevelopment[0m
+2026-03-09 23:40:24,272 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+[2m2026-03-09T20:40:24.273067Z[0m [[32m[1minfo     [0m] [1mselect pg_catalog.version()   [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:40:24,273 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:40:24.273170Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:40:24,275 INFO sqlalchemy.engine.Engine select current_schema()
+[2m2026-03-09T20:40:24.275297Z[0m [[32m[1minfo     [0m] [1mselect current_schema()       [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:40:24,275 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:40:24.275357Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:40:24,277 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+[2m2026-03-09T20:40:24.277153Z[0m [[32m[1minfo     [0m] [1mshow standard_conforming_strings[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:40:24,277 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:40:24.277216Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:40:24,278 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:40:24.278607Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:40:24,280 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:40:24.280359Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:40:24,280 INFO sqlalchemy.engine.Engine [generated in 0.00020s] ('queued', '6d0ddaf5-b8cd-4911-a0c2-4976209b7e8b', None, '{"id": "15b3eb67-b633-4852-8fcb-dd5cc3b85f28", "naturalLanguagePrompt": "Test from CLI", "category": "op-amp", "supplyVoltage": 1.8, "technology": "T ... (87 characters truncated) ... traints": [{"id": "b7941a93-750a-4999-ba1a-e301da581059", "metric": "DC Gain", "target": 60.0, "unit": "dB", "tolerance": null, "priority": "hard"}]}', '[]', None, None, None, None, None, '04f607ac-2828-4b9f-918a-dab256e4e37f', datetime.datetime(2026, 3, 9, 20, 40, 24, 280250, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 24, 280252, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:40:24.280442Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00020s] ('queued', '6d0ddaf5-b8cd-4911-a0c2-4976209b7e8b', None, '{"id": "15b3eb67-b633-4852-8fcb-dd5cc3b85f28", "naturalLanguagePrompt": "Test from CLI", "category": "op-amp", "supplyVoltage": 1.8, "technology": "T ... (87 characters truncated) ... traints": [{"id": "b7941a93-750a-4999-ba1a-e301da581059", "metric": "DC Gain", "target": 60.0, "unit": "dB", "tolerance": null, "priority": "hard"}]}', '[]', None, None, None, None, None, '04f607ac-2828-4b9f-918a-dab256e4e37f', datetime.datetime(2026, 3, 9, 20, 40, 24, 280250, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 24, 280252, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:40:24,282 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:40:24.282416Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:30,158 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:41:30.158437Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:30,159 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:41:30.159220Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:30,159 INFO sqlalchemy.engine.Engine [cached since 65.88s ago] ('queued', '852507af-ca32-40c4-b8b7-2d4488667517', None, '{"id": "7d3e834f-31c3-448e-b934-1a8be23ddd37", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "017ecf11-eca9-4094-b17f-26fab9047fd0", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, '57fc7676-dd8f-48e5-90a8-b184806ee2c7', datetime.datetime(2026, 3, 9, 20, 41, 30, 158960, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 41, 30, 158965, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:41:30.159540Z[0m [[32m[1minfo     [0m] [1m[cached since 65.88s ago] ('queued', '852507af-ca32-40c4-b8b7-2d4488667517', None, '{"id": "7d3e834f-31c3-448e-b934-1a8be23ddd37", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "017ecf11-eca9-4094-b17f-26fab9047fd0", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, '57fc7676-dd8f-48e5-90a8-b184806ee2c7', datetime.datetime(2026, 3, 9, 20, 41, 30, 158960, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 41, 30, 158965, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:30,162 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:41:30.163178Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:32,188 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:41:32.188282Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:32,192 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:41:32.192486Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:32,192 INFO sqlalchemy.engine.Engine [generated in 0.00050s] ('57fc7676-dd8f-48e5-90a8-b184806ee2c7',)
+[2m2026-03-09T20:41:32.192693Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00050s] ('57fc7676-dd8f-48e5-90a8-b184806ee2c7',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:32,202 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:41:32.202489Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:36,405 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:41:36.405828Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:36,406 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:41:36.406418Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:36,406 INFO sqlalchemy.engine.Engine [cached since 72.13s ago] ('queued', '1f54e8f3-8158-4734-9207-3e3ab70bc093', None, '{"id": "a7878a8a-66c4-4e22-8fae-09af230dd25d", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "1c121187-7f78-4dbc-91c6-6229143d854c", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, 'b4f0ff04-1dd0-4421-83f5-b80c2d2274c1', datetime.datetime(2026, 3, 9, 20, 41, 36, 406213, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 41, 36, 406216, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:41:36.406609Z[0m [[32m[1minfo     [0m] [1m[cached since 72.13s ago] ('queued', '1f54e8f3-8158-4734-9207-3e3ab70bc093', None, '{"id": "a7878a8a-66c4-4e22-8fae-09af230dd25d", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "1c121187-7f78-4dbc-91c6-6229143d854c", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, 'b4f0ff04-1dd0-4421-83f5-b80c2d2274c1', datetime.datetime(2026, 3, 9, 20, 41, 36, 406213, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 41, 36, 406216, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:36,408 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:41:36.408574Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:38,434 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:41:38.434806Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:38,435 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:41:38.435487Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:38,435 INFO sqlalchemy.engine.Engine [cached since 6.244s ago] ('b4f0ff04-1dd0-4421-83f5-b80c2d2274c1',)
+[2m2026-03-09T20:41:38.435665Z[0m [[32m[1minfo     [0m] [1m[cached since 6.244s ago] ('b4f0ff04-1dd0-4421-83f5-b80c2d2274c1',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:41:38,439 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:41:38.440115Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:45:40,540 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:45:40.542086Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:45:40,542 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:45:40.542876Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:45:40,542 INFO sqlalchemy.engine.Engine [cached since 316.3s ago] ('queued', 'fbe508ac-4931-4d75-9e40-4ac7379bc5e6', None, '{"id": "a0cb21f7-3390-4ab4-93bf-f8d487c54224", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "8a671bfb-e6ed-4a42-af51-106f93c1fcc3", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, 'f96624ec-d440-4bbc-9f05-b382f78336fb', datetime.datetime(2026, 3, 9, 20, 45, 40, 542663, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 45, 40, 542667, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:45:40.543094Z[0m [[32m[1minfo     [0m] [1m[cached since 316.3s ago] ('queued', 'fbe508ac-4931-4d75-9e40-4ac7379bc5e6', None, '{"id": "a0cb21f7-3390-4ab4-93bf-f8d487c54224", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "8a671bfb-e6ed-4a42-af51-106f93c1fcc3", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, 'f96624ec-d440-4bbc-9f05-b382f78336fb', datetime.datetime(2026, 3, 9, 20, 45, 40, 542663, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 45, 40, 542667, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:45:40,546 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:45:40.546312Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:45:42,570 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:45:42.571144Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:45:42,571 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:45:42.571683Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:45:42,571 INFO sqlalchemy.engine.Engine [cached since 250.4s ago] ('f96624ec-d440-4bbc-9f05-b382f78336fb',)
+[2m2026-03-09T20:45:42.571903Z[0m [[32m[1minfo     [0m] [1m[cached since 250.4s ago] ('f96624ec-d440-4bbc-9f05-b382f78336fb',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:45:42,576 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:45:42.576779Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:46:29,275 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:46:29.275836Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:46:29,276 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:46:29.276430Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:46:29,276 INFO sqlalchemy.engine.Engine [cached since 365s ago] ('queued', '5ce1540f-8371-4e58-92cd-24aad85335e2', None, '{"id": "fb7a300d-78a1-4667-9cfb-b855498c67d3", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "f6f7b3e1-5eed-43e8-8955-ca4f588a1412", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, '90cf5264-a19f-45ef-ac8d-0f28bb10d167', datetime.datetime(2026, 3, 9, 20, 46, 29, 276221, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 46, 29, 276224, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:46:29.276639Z[0m [[32m[1minfo     [0m] [1m[cached since 365s ago] ('queued', '5ce1540f-8371-4e58-92cd-24aad85335e2', None, '{"id": "fb7a300d-78a1-4667-9cfb-b855498c67d3", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "f6f7b3e1-5eed-43e8-8955-ca4f588a1412", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, '90cf5264-a19f-45ef-ac8d-0f28bb10d167', datetime.datetime(2026, 3, 9, 20, 46, 29, 276221, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 46, 29, 276224, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:46:29,278 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:46:29.278318Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:46:31,300 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:46:31.300391Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:46:31,300 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:46:31.300613Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:46:31,300 INFO sqlalchemy.engine.Engine [cached since 299.1s ago] ('90cf5264-a19f-45ef-ac8d-0f28bb10d167',)
+[2m2026-03-09T20:46:31.300696Z[0m [[32m[1minfo     [0m] [1m[cached since 299.1s ago] ('90cf5264-a19f-45ef-ac8d-0f28bb10d167',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:46:31,302 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:46:31.302766Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:47:58,242 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:47:58.243016Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:47:58,243 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:47:58.243493Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:47:58,243 INFO sqlalchemy.engine.Engine [cached since 454s ago] ('queued', '8f4f6ba1-3ad8-4e45-9c04-bca38e066d16', None, '{"id": "c901a29c-26c1-4899-9b0c-a26da25fc78b", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (587 characters truncated) ... ty": "hard"}, {"id": "33dcd549-8560-4a9b-a246-09cfd189bac4", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, 'e8595219-89f4-408c-8715-3ce24aef35b0', datetime.datetime(2026, 3, 9, 20, 47, 58, 243331, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 47, 58, 243333, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:47:58.243685Z[0m [[32m[1minfo     [0m] [1m[cached since 454s ago] ('queued', '8f4f6ba1-3ad8-4e45-9c04-bca38e066d16', None, '{"id": "c901a29c-26c1-4899-9b0c-a26da25fc78b", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (587 characters truncated) ... ty": "hard"}, {"id": "33dcd549-8560-4a9b-a246-09cfd189bac4", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, 'e8595219-89f4-408c-8715-3ce24aef35b0', datetime.datetime(2026, 3, 9, 20, 47, 58, 243331, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 47, 58, 243333, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:47:58,245 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:47:58.245667Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:00,269 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:48:00.269286Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:00,269 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:48:00.269804Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:00,269 INFO sqlalchemy.engine.Engine [cached since 388.1s ago] ('e8595219-89f4-408c-8715-3ce24aef35b0',)
+[2m2026-03-09T20:48:00.269966Z[0m [[32m[1minfo     [0m] [1m[cached since 388.1s ago] ('e8595219-89f4-408c-8715-3ce24aef35b0',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:00,272 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:48:00.272551Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+WARNING:  WatchFiles detected changes in 'app/services/openai/chat.py'. Reloading...
+[2m2026-03-09T20:48:01.723069Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_shutdown        [0m [[0m[1m[34mapp.main[0m][0m
+INFO:     Started server process [10004]
+INFO:     Waiting for application startup.
+[2m2026-03-09T20:48:02.563777Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_starting        [0m [[0m[1m[34mapp.main[0m][0m [36menv[0m=[35mdevelopment[0m
+WARNING:  WatchFiles detected changes in 'app/schemas/chat.py'. Reloading...
+[2m2026-03-09T20:48:17.111547Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_shutdown        [0m [[0m[1m[34mapp.main[0m][0m
+WARNING:  WatchFiles detected changes in 'app/api/v1/runs.py'. Reloading...
+INFO:     Started server process [10025]
+INFO:     Waiting for application startup.
+[2m2026-03-09T20:48:18.009666Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_starting        [0m [[0m[1m[34mapp.main[0m][0m [36menv[0m=[35mdevelopment[0m
+[2m2026-03-09T20:48:18.111141Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_shutdown        [0m [[0m[1m[34mapp.main[0m][0m
+INFO:     Started server process [10029]
+INFO:     Waiting for application startup.
+[2m2026-03-09T20:48:18.713663Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_starting        [0m [[0m[1m[34mapp.main[0m][0m [36menv[0m=[35mdevelopment[0m
+2026-03-09 23:48:34,476 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+[2m2026-03-09T20:48:34.476812Z[0m [[32m[1minfo     [0m] [1mselect pg_catalog.version()   [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:34,476 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:48:34.476975Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:34,479 INFO sqlalchemy.engine.Engine select current_schema()
+[2m2026-03-09T20:48:34.480055Z[0m [[32m[1minfo     [0m] [1mselect current_schema()       [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:34,480 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:48:34.480164Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:34,482 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+[2m2026-03-09T20:48:34.483012Z[0m [[32m[1minfo     [0m] [1mshow standard_conforming_strings[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:34,483 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:48:34.483095Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:34,484 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:48:34.484760Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:34,486 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:48:34.486217Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:34,486 INFO sqlalchemy.engine.Engine [generated in 0.00026s] ('queued', '7fb15e05-62dc-4a8b-a6e4-8df479a9a1e1', None, '{"id": "aae18de3-8a01-4452-bfa9-e29f2595c946", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "39c7e9ed-e136-408d-9b10-c427108b8429", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, '01336407-c5af-40ee-bd15-e49a15e36b8f', datetime.datetime(2026, 3, 9, 20, 48, 34, 486070, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 48, 34, 486072, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:48:34.486347Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00026s] ('queued', '7fb15e05-62dc-4a8b-a6e4-8df479a9a1e1', None, '{"id": "aae18de3-8a01-4452-bfa9-e29f2595c946", "naturalLanguagePrompt": "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 ... (725 characters truncated) ... ty": "hard"}, {"id": "39c7e9ed-e136-408d-9b10-c427108b8429", "metric": "Power", "target": 1.0, "unit": "mW", "tolerance": null, "priority": "soft"}]}', '[]', None, None, None, None, None, '01336407-c5af-40ee-bd15-e49a15e36b8f', datetime.datetime(2026, 3, 9, 20, 48, 34, 486070, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 48, 34, 486072, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:34,490 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:48:34.490184Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:36,626 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:48:36.626655Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:36,630 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:48:36.630423Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:36,630 INFO sqlalchemy.engine.Engine [generated in 0.00056s] ('01336407-c5af-40ee-bd15-e49a15e36b8f',)
+[2m2026-03-09T20:48:36.630662Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00056s] ('01336407-c5af-40ee-bd15-e49a15e36b8f',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:48:36,637 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:48:36.638002Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+WARNING:  WatchFiles detected changes in 'app/tasks/orchestration.py'. Reloading...
+[2m2026-03-09T20:51:52.950049Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_shutdown        [0m [[0m[1m[34mapp.main[0m][0m
+INFO:     Started server process [12371]
+INFO:     Waiting for application startup.
+[2m2026-03-09T20:51:53.858538Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_starting        [0m [[0m[1m[34mapp.main[0m][0m [36menv[0m=[35mdevelopment[0m
+2026-03-09 23:52:24,206 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+[2m2026-03-09T20:52:24.206110Z[0m [[32m[1minfo     [0m] [1mselect pg_catalog.version()   [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:52:24,206 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:52:24.206217Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:52:24,208 INFO sqlalchemy.engine.Engine select current_schema()
+[2m2026-03-09T20:52:24.209084Z[0m [[32m[1minfo     [0m] [1mselect current_schema()       [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:52:24,209 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:52:24.209159Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:52:24,211 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+[2m2026-03-09T20:52:24.211307Z[0m [[32m[1minfo     [0m] [1mshow standard_conforming_strings[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:52:24,211 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:52:24.211362Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:52:24,212 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:52:24.212666Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:52:24,213 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:52:24.213679Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:52:24,213 INFO sqlalchemy.engine.Engine [generated in 0.00016s] ('queued', '1d80c2ae-6352-4480-9c81-c47376dc4001', None, '{"id": "6f3eb02a-dee3-4f3a-a5ca-0b81f4220d72", "naturalLanguagePrompt": "Test error", "category": "op-amp", "supplyVoltage": 1.8, "technology": "TSMC 180nm", "temperature": 27, "createdAt": "2026-03-09T20:52:24.166877+00:00", "constraints": []}', '[]', None, None, None, None, None, 'fe95054f-a6ab-46c6-9cfb-57ea156c94a3', datetime.datetime(2026, 3, 9, 20, 52, 24, 213597, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 52, 24, 213598, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:52:24.213751Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00016s] ('queued', '1d80c2ae-6352-4480-9c81-c47376dc4001', None, '{"id": "6f3eb02a-dee3-4f3a-a5ca-0b81f4220d72", "naturalLanguagePrompt": "Test error", "category": "op-amp", "supplyVoltage": 1.8, "technology": "TSMC 180nm", "temperature": 27, "createdAt": "2026-03-09T20:52:24.166877+00:00", "constraints": []}', '[]', None, None, None, None, None, 'fe95054f-a6ab-46c6-9cfb-57ea156c94a3', datetime.datetime(2026, 3, 9, 20, 52, 24, 213597, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 52, 24, 213598, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:52:24,216 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:52:24.216300Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:11,923 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:53:11.923501Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:11,926 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:53:11.926145Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:11,926 INFO sqlalchemy.engine.Engine [generated in 0.00028s] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3',)
+[2m2026-03-09T20:53:11.926311Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00028s] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:11,935 INFO sqlalchemy.engine.Engine SELECT generated_netlists.run_id, generated_netlists.iteration_id, generated_netlists.raw_spice, generated_netlists.format, generated_netlists.generated_at, generated_netlists.generation_attempt, generated_netlists.id, generated_netlists.created_at, generated_netlists.updated_at 
+FROM generated_netlists 
+WHERE generated_netlists.run_id = $1::VARCHAR ORDER BY generated_netlists.created_at DESC 
+ LIMIT $2::INTEGER
+[2m2026-03-09T20:53:11.936045Z[0m [[32m[1minfo     [0m] [1mSELECT generated_netlists.run_id, generated_netlists.iteration_id, generated_netlists.raw_spice, generated_netlists.format, generated_netlists.generated_at, generated_netlists.generation_attempt, generated_netlists.id, generated_netlists.created_at, generated_netlists.updated_at 
+FROM generated_netlists 
+WHERE generated_netlists.run_id = $1::VARCHAR ORDER BY generated_netlists.created_at DESC 
+ LIMIT $2::INTEGER[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:11,936 INFO sqlalchemy.engine.Engine [generated in 0.00028s] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3', 1)
+[2m2026-03-09T20:53:11.936206Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00028s] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3', 1)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:11,943 INFO sqlalchemy.engine.Engine SELECT simulation_results.job_id, simulation_results.run_id, simulation_results.iteration_id, simulation_results.metrics, simulation_results.ac_response, simulation_results.phase_response, simulation_results.transient_response, simulation_results.monte_carlo_gain, simulation_results.monte_carlo_phase_margin, simulation_results.simulated_at, simulation_results.id, simulation_results.created_at, simulation_results.updated_at 
+FROM simulation_results 
+WHERE simulation_results.run_id = $1::VARCHAR ORDER BY simulation_results.created_at DESC 
+ LIMIT $2::INTEGER
+[2m2026-03-09T20:53:11.943616Z[0m [[32m[1minfo     [0m] [1mSELECT simulation_results.job_id, simulation_results.run_id, simulation_results.iteration_id, simulation_results.metrics, simulation_results.ac_response, simulation_results.phase_response, simulation_results.transient_response, simulation_results.monte_carlo_gain, simulation_results.monte_carlo_phase_margin, simulation_results.simulated_at, simulation_results.id, simulation_results.created_at, simulation_results.updated_at 
+FROM simulation_results 
+WHERE simulation_results.run_id = $1::VARCHAR ORDER BY simulation_results.created_at DESC 
+ LIMIT $2::INTEGER[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:11,943 INFO sqlalchemy.engine.Engine [generated in 0.00029s] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3', 1)
+[2m2026-03-09T20:53:11.943759Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00029s] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3', 1)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:11,990 INFO sqlalchemy.engine.Engine SELECT design_iterations.run_id, design_iterations.iteration_number, design_iterations.status, design_iterations.parameter_changes, design_iterations.metric_deltas, design_iterations.targets_met_count, design_iterations.total_targets, design_iterations.all_targets_met, design_iterations.notes, design_iterations.reasoning, design_iterations.started_at, design_iterations.completed_at, design_iterations.id, design_iterations.created_at, design_iterations.updated_at 
+FROM design_iterations 
+WHERE design_iterations.run_id = $1::VARCHAR ORDER BY design_iterations.iteration_number
+[2m2026-03-09T20:53:11.990938Z[0m [[32m[1minfo     [0m] [1mSELECT design_iterations.run_id, design_iterations.iteration_number, design_iterations.status, design_iterations.parameter_changes, design_iterations.metric_deltas, design_iterations.targets_met_count, design_iterations.total_targets, design_iterations.all_targets_met, design_iterations.notes, design_iterations.reasoning, design_iterations.started_at, design_iterations.completed_at, design_iterations.id, design_iterations.created_at, design_iterations.updated_at 
+FROM design_iterations 
+WHERE design_iterations.run_id = $1::VARCHAR ORDER BY design_iterations.iteration_number[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:11,990 INFO sqlalchemy.engine.Engine [generated in 0.00021s] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3',)
+[2m2026-03-09T20:53:11.991035Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00021s] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:11,997 INFO sqlalchemy.engine.Engine SELECT candidate_designs.run_id, candidate_designs.rank, candidate_designs.topology_name, candidate_designs.status, candidate_designs.gain_db, candidate_designs.bandwidth_mhz, candidate_designs.phase_margin_deg, candidate_designs.power_mw, candidate_designs.noise_nv_sqrt_hz, candidate_designs.score, candidate_designs.rejection_reason, candidate_designs.selection_reason, candidate_designs.scores_detail, candidate_designs.id, candidate_designs.created_at, candidate_designs.updated_at 
+FROM candidate_designs 
+WHERE candidate_designs.run_id = $1::VARCHAR ORDER BY candidate_designs.rank
+[2m2026-03-09T20:53:11.997450Z[0m [[32m[1minfo     [0m] [1mSELECT candidate_designs.run_id, candidate_designs.rank, candidate_designs.topology_name, candidate_designs.status, candidate_designs.gain_db, candidate_designs.bandwidth_mhz, candidate_designs.phase_margin_deg, candidate_designs.power_mw, candidate_designs.noise_nv_sqrt_hz, candidate_designs.score, candidate_designs.rejection_reason, candidate_designs.selection_reason, candidate_designs.scores_detail, candidate_designs.id, candidate_designs.created_at, candidate_designs.updated_at 
+FROM candidate_designs 
+WHERE candidate_designs.run_id = $1::VARCHAR ORDER BY candidate_designs.rank[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:11,997 INFO sqlalchemy.engine.Engine [generated in 0.00011s] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3',)
+[2m2026-03-09T20:53:11.997519Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00011s] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:12,002 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:53:12.002193Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:22,783 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:53:22.784088Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:22,784 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2m2026-03-09T20:53:22.784269Z[0m [[32m[1minfo     [0m] [1mSELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:22,784 INFO sqlalchemy.engine.Engine [cached since 10.86s ago] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3',)
+[2m2026-03-09T20:53:22.784336Z[0m [[32m[1minfo     [0m] [1m[cached since 10.86s ago] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:22,785 INFO sqlalchemy.engine.Engine SELECT generated_netlists.run_id, generated_netlists.iteration_id, generated_netlists.raw_spice, generated_netlists.format, generated_netlists.generated_at, generated_netlists.generation_attempt, generated_netlists.id, generated_netlists.created_at, generated_netlists.updated_at 
+FROM generated_netlists 
+WHERE generated_netlists.run_id = $1::VARCHAR ORDER BY generated_netlists.created_at DESC 
+ LIMIT $2::INTEGER
+[2m2026-03-09T20:53:22.786008Z[0m [[32m[1minfo     [0m] [1mSELECT generated_netlists.run_id, generated_netlists.iteration_id, generated_netlists.raw_spice, generated_netlists.format, generated_netlists.generated_at, generated_netlists.generation_attempt, generated_netlists.id, generated_netlists.created_at, generated_netlists.updated_at 
+FROM generated_netlists 
+WHERE generated_netlists.run_id = $1::VARCHAR ORDER BY generated_netlists.created_at DESC 
+ LIMIT $2::INTEGER[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:22,786 INFO sqlalchemy.engine.Engine [cached since 10.85s ago] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3', 1)
+[2m2026-03-09T20:53:22.786080Z[0m [[32m[1minfo     [0m] [1m[cached since 10.85s ago] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3', 1)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:22,786 INFO sqlalchemy.engine.Engine SELECT simulation_results.job_id, simulation_results.run_id, simulation_results.iteration_id, simulation_results.metrics, simulation_results.ac_response, simulation_results.phase_response, simulation_results.transient_response, simulation_results.monte_carlo_gain, simulation_results.monte_carlo_phase_margin, simulation_results.simulated_at, simulation_results.id, simulation_results.created_at, simulation_results.updated_at 
+FROM simulation_results 
+WHERE simulation_results.run_id = $1::VARCHAR ORDER BY simulation_results.created_at DESC 
+ LIMIT $2::INTEGER
+[2m2026-03-09T20:53:22.786958Z[0m [[32m[1minfo     [0m] [1mSELECT simulation_results.job_id, simulation_results.run_id, simulation_results.iteration_id, simulation_results.metrics, simulation_results.ac_response, simulation_results.phase_response, simulation_results.transient_response, simulation_results.monte_carlo_gain, simulation_results.monte_carlo_phase_margin, simulation_results.simulated_at, simulation_results.id, simulation_results.created_at, simulation_results.updated_at 
+FROM simulation_results 
+WHERE simulation_results.run_id = $1::VARCHAR ORDER BY simulation_results.created_at DESC 
+ LIMIT $2::INTEGER[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:22,786 INFO sqlalchemy.engine.Engine [cached since 10.84s ago] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3', 1)
+[2m2026-03-09T20:53:22.787021Z[0m [[32m[1minfo     [0m] [1m[cached since 10.84s ago] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3', 1)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:22,789 INFO sqlalchemy.engine.Engine SELECT design_iterations.run_id, design_iterations.iteration_number, design_iterations.status, design_iterations.parameter_changes, design_iterations.metric_deltas, design_iterations.targets_met_count, design_iterations.total_targets, design_iterations.all_targets_met, design_iterations.notes, design_iterations.reasoning, design_iterations.started_at, design_iterations.completed_at, design_iterations.id, design_iterations.created_at, design_iterations.updated_at 
+FROM design_iterations 
+WHERE design_iterations.run_id = $1::VARCHAR ORDER BY design_iterations.iteration_number
+[2m2026-03-09T20:53:22.789556Z[0m [[32m[1minfo     [0m] [1mSELECT design_iterations.run_id, design_iterations.iteration_number, design_iterations.status, design_iterations.parameter_changes, design_iterations.metric_deltas, design_iterations.targets_met_count, design_iterations.total_targets, design_iterations.all_targets_met, design_iterations.notes, design_iterations.reasoning, design_iterations.started_at, design_iterations.completed_at, design_iterations.id, design_iterations.created_at, design_iterations.updated_at 
+FROM design_iterations 
+WHERE design_iterations.run_id = $1::VARCHAR ORDER BY design_iterations.iteration_number[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:22,789 INFO sqlalchemy.engine.Engine [cached since 10.8s ago] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3',)
+[2m2026-03-09T20:53:22.789609Z[0m [[32m[1minfo     [0m] [1m[cached since 10.8s ago] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:22,790 INFO sqlalchemy.engine.Engine SELECT candidate_designs.run_id, candidate_designs.rank, candidate_designs.topology_name, candidate_designs.status, candidate_designs.gain_db, candidate_designs.bandwidth_mhz, candidate_designs.phase_margin_deg, candidate_designs.power_mw, candidate_designs.noise_nv_sqrt_hz, candidate_designs.score, candidate_designs.rejection_reason, candidate_designs.selection_reason, candidate_designs.scores_detail, candidate_designs.id, candidate_designs.created_at, candidate_designs.updated_at 
+FROM candidate_designs 
+WHERE candidate_designs.run_id = $1::VARCHAR ORDER BY candidate_designs.rank
+[2m2026-03-09T20:53:22.790382Z[0m [[32m[1minfo     [0m] [1mSELECT candidate_designs.run_id, candidate_designs.rank, candidate_designs.topology_name, candidate_designs.status, candidate_designs.gain_db, candidate_designs.bandwidth_mhz, candidate_designs.phase_margin_deg, candidate_designs.power_mw, candidate_designs.noise_nv_sqrt_hz, candidate_designs.score, candidate_designs.rejection_reason, candidate_designs.selection_reason, candidate_designs.scores_detail, candidate_designs.id, candidate_designs.created_at, candidate_designs.updated_at 
+FROM candidate_designs 
+WHERE candidate_designs.run_id = $1::VARCHAR ORDER BY candidate_designs.rank[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:22,790 INFO sqlalchemy.engine.Engine [cached since 10.79s ago] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3',)
+[2m2026-03-09T20:53:22.790430Z[0m [[32m[1minfo     [0m] [1m[cached since 10.79s ago] ('fe95054f-a6ab-46c6-9cfb-57ea156c94a3',)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:53:22,791 INFO sqlalchemy.engine.Engine ROLLBACK
+[2m2026-03-09T20:53:22.791541Z[0m [[32m[1minfo     [0m] [1mROLLBACK                      [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+[2m2026-03-09T21:21:51.397963Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_shutdown        [0m [[0m[1m[34mapp.main[0m][0m
+INFO:     Stopping reloader process [4958]

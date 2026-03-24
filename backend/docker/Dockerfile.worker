@@ -1,0 +1,17 @@
+FROM python:3.11-slim
+
+WORKDIR /code
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc libpq-dev curl docker.io && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY pyproject.toml .
+COPY app/ ./app/
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir ".[dev]"
+COPY alembic/ ./alembic/
+COPY alembic.ini .
+
+CMD ["celery", "-A", "app.workers.celery_app", "worker", \
+     "--loglevel=info", "--concurrency=4", "-Q", "default,simulation,monte_carlo"]

@@ -35,3 +35,20 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+backend/.venv/
+backend/venv/
+backend/env/
+*.egg-info/
+dist/
+*.db
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/

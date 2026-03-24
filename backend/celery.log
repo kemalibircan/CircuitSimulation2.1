@@ -1,0 +1,1064 @@
+ 
+ -------------- celery@ali-MacBook-Air.local v5.6.2 (recovery)
+--- ***** ----- 
+-- ******* ---- macOS-26.2-arm64-arm-64bit 2026-03-09 23:40:13
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         circuitai:0x1090ea350
+- ** ---------- .> transport:   redis://localhost:6380/1
+- ** ---------- .> results:     redis://localhost:6380/2
+- *** --- * --- .> concurrency: 8 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                .> default          exchange=default(direct) key=default
+                .> monte_carlo      exchange=monte_carlo(direct) key=monte_carlo
+                .> simulation       exchange=simulation(direct) key=simulation
+
+[tasks]
+  . app.tasks.monte_carlo.run_monte_carlo
+  . app.tasks.orchestration.run_design_pipeline
+  . app.tasks.simulation.run_xyce_simulation
+
+[2026-03-09 23:40:13,489: INFO/MainProcess] Connected to redis://localhost:6380/1
+[2026-03-09 23:40:13,500: INFO/MainProcess] mingle: searching for neighbors
+[2026-03-09 23:40:14,524: INFO/MainProcess] mingle: all alone
+[2026-03-09 23:40:14,559: INFO/MainProcess] celery@ali-MacBook-Air.local ready.
+[2026-03-09 23:40:24,387: INFO/MainProcess] Task app.tasks.orchestration.run_design_pipeline[063b67a3-8786-45e7-a815-8fced6b7b4b9] received
+[2026-03-09 23:40:24,393: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24 [info     ] pipeline_task_started          run_id=04f607ac-2828-4b9f-918a-dab256e4e37f task_id=063b67a3-8786-45e7-a815-8fced6b7b4b9
+[2026-03-09 23:40:24,774: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,774 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+[2026-03-09 23:40:24,774: INFO/ForkPoolWorker-8] select pg_catalog.version()
+[2026-03-09 23:40:24,774: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,774 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2026-03-09 23:40:24,774: INFO/ForkPoolWorker-8] [raw sql] ()
+[2026-03-09 23:40:24,777: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,777 INFO sqlalchemy.engine.Engine select current_schema()
+[2026-03-09 23:40:24,777: INFO/ForkPoolWorker-8] select current_schema()
+[2026-03-09 23:40:24,777: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,777 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2026-03-09 23:40:24,777: INFO/ForkPoolWorker-8] [raw sql] ()
+[2026-03-09 23:40:24,780: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,780 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+[2026-03-09 23:40:24,780: INFO/ForkPoolWorker-8] show standard_conforming_strings
+[2026-03-09 23:40:24,781: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,781 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2026-03-09 23:40:24,781: INFO/ForkPoolWorker-8] [raw sql] ()
+[2026-03-09 23:40:24,783: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,783 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:24,783: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:24,797: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,797 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:40:24,797: INFO/ForkPoolWorker-8] SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:40:24,798: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,798 INFO sqlalchemy.engine.Engine [generated in 0.00051s] ('04f607ac-2828-4b9f-918a-dab256e4e37f',)
+[2026-03-09 23:40:24,798: INFO/ForkPoolWorker-8] [generated in 0.00051s] ('04f607ac-2828-4b9f-918a-dab256e4e37f',)
+[2026-03-09 23:40:24,807: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,807 INFO sqlalchemy.engine.Engine UPDATE design_runs SET status=$1::VARCHAR, started_at=$2::VARCHAR, updated_at=$3::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $4::VARCHAR
+[2026-03-09 23:40:24,807: INFO/ForkPoolWorker-8] UPDATE design_runs SET status=$1::VARCHAR, started_at=$2::VARCHAR, updated_at=$3::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $4::VARCHAR
+[2026-03-09 23:40:24,807: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,807 INFO sqlalchemy.engine.Engine [generated in 0.00056s] ('running', '2026-03-09T20:40:24.806197+00:00', datetime.datetime(2026, 3, 9, 20, 40, 24, 807032, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:24,807: INFO/ForkPoolWorker-8] [generated in 0.00056s] ('running', '2026-03-09T20:40:24.806197+00:00', datetime.datetime(2026, 3, 9, 20, 40, 24, 807032, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:24,809: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,809 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:24,809: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:24,813: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,813 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:24,813: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:24,814: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,814 INFO sqlalchemy.engine.Engine UPDATE design_runs SET current_step=$1::VARCHAR, steps=$2::JSON, updated_at=$3::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $4::VARCHAR
+[2026-03-09 23:40:24,814: INFO/ForkPoolWorker-8] UPDATE design_runs SET current_step=$1::VARCHAR, steps=$2::JSON, updated_at=$3::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $4::VARCHAR
+[2026-03-09 23:40:24,814: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,814 INFO sqlalchemy.engine.Engine [generated in 0.00054s] ('requirement_parsing', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "running", "started_at": "2026-03-09T20:40:24.811647+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 24, 811672, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:24,814: INFO/ForkPoolWorker-8] [generated in 0.00054s] ('requirement_parsing', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "running", "started_at": "2026-03-09T20:40:24.811647+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 24, 811672, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:24,816: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,816 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:24,816: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:24,818: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,818 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:24,818: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:24,819: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,819 INFO sqlalchemy.engine.Engine INSERT INTO agent_messages (run_id, role, content, action_type, pipeline_step, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR, $7::TIMESTAMP WITH TIME ZONE, $8::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:24,819: INFO/ForkPoolWorker-8] INSERT INTO agent_messages (run_id, role, content, action_type, pipeline_step, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR, $7::TIMESTAMP WITH TIME ZONE, $8::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:24,820: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,820 INFO sqlalchemy.engine.Engine [generated in 0.00061s] ('04f607ac-2828-4b9f-918a-dab256e4e37f', 'agent', 'Parsing your design requirements...', None, 'requirement_parsing', 'c4bc3946-356e-4ef1-b9ee-da27bd3cd8a5', datetime.datetime(2026, 3, 9, 20, 40, 24, 817545, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 24, 819679, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:24,820: INFO/ForkPoolWorker-8] [generated in 0.00061s] ('04f607ac-2828-4b9f-918a-dab256e4e37f', 'agent', 'Parsing your design requirements...', None, 'requirement_parsing', 'c4bc3946-356e-4ef1-b9ee-da27bd3cd8a5', datetime.datetime(2026, 3, 9, 20, 40, 24, 817545, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 24, 819679, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:24,823: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24,823 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:24,823: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:24,848: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:24 [debug    ] openai_request                 json_mode=True model=gpt-4o n_messages=2 run_id=04f607ac-2828-4b9f-918a-dab256e4e37f task_id=063b67a3-8786-45e7-a815-8fced6b7b4b9
+[2026-03-09 23:40:27,838: INFO/ForkPoolWorker-8] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-03-09 23:40:27,848: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:27 [debug    ] openai_response_received       run_id=04f607ac-2828-4b9f-918a-dab256e4e37f task_id=063b67a3-8786-45e7-a815-8fced6b7b4b9 tokens=392
+[2026-03-09 23:40:27,850: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:27 [info     ] requirements_parsed            run_id=04f607ac-2828-4b9f-918a-dab256e4e37f task_id=063b67a3-8786-45e7-a815-8fced6b7b4b9 topology_hints=['two-stage', 'folded-cascode']
+[2026-03-09 23:40:27,853: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:27,853 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:27,853: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:27,854: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:27,854 INFO sqlalchemy.engine.Engine UPDATE design_runs SET current_step=$1::VARCHAR, steps=$2::JSON, updated_at=$3::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $4::VARCHAR
+[2026-03-09 23:40:27,854: INFO/ForkPoolWorker-8] UPDATE design_runs SET current_step=$1::VARCHAR, steps=$2::JSON, updated_at=$3::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $4::VARCHAR
+[2026-03-09 23:40:27,855: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:27,855 INFO sqlalchemy.engine.Engine [cached since 3.041s ago] ('topology_selection', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (422 characters truncated) ... "", "status": "running", "started_at": "2026-03-09T20:40:27.850345+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 27, 850417, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:27,855: INFO/ForkPoolWorker-8] [cached since 3.041s ago] ('topology_selection', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (422 characters truncated) ... "", "status": "running", "started_at": "2026-03-09T20:40:27.850345+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 27, 850417, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:27,858: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:27,857 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:27,857: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:27,862: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:27,862 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:27,862: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:27,863: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:27,863 INFO sqlalchemy.engine.Engine INSERT INTO agent_messages (run_id, role, content, action_type, pipeline_step, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR, $7::TIMESTAMP WITH TIME ZONE, $8::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:27,863: INFO/ForkPoolWorker-8] INSERT INTO agent_messages (run_id, role, content, action_type, pipeline_step, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR, $7::TIMESTAMP WITH TIME ZONE, $8::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:27,864: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:27,864 INFO sqlalchemy.engine.Engine [cached since 3.045s ago] ('04f607ac-2828-4b9f-918a-dab256e4e37f', 'agent', 'Evaluating circuit topologies...', None, 'topology_selection', 'bf148b46-5c34-413d-954f-e165ce0f45cf', datetime.datetime(2026, 3, 9, 20, 40, 27, 860034, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 27, 863393, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:27,864: INFO/ForkPoolWorker-8] [cached since 3.045s ago] ('04f607ac-2828-4b9f-918a-dab256e4e37f', 'agent', 'Evaluating circuit topologies...', None, 'topology_selection', 'bf148b46-5c34-413d-954f-e165ce0f45cf', datetime.datetime(2026, 3, 9, 20, 40, 27, 860034, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 27, 863393, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:27,867: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:27,867 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:27,867: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:27,870: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:27 [debug    ] openai_request                 json_mode=True model=gpt-4o n_messages=2 run_id=04f607ac-2828-4b9f-918a-dab256e4e37f task_id=063b67a3-8786-45e7-a815-8fced6b7b4b9
+[2026-03-09 23:40:36,484: INFO/ForkPoolWorker-8] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-03-09 23:40:36,506: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:36 [debug    ] openai_response_received       run_id=04f607ac-2828-4b9f-918a-dab256e4e37f task_id=063b67a3-8786-45e7-a815-8fced6b7b4b9 tokens=882
+[2026-03-09 23:40:36,509: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:36 [info     ] topology_proposed              name=two-stage run_id=04f607ac-2828-4b9f-918a-dab256e4e37f task_id=063b67a3-8786-45e7-a815-8fced6b7b4b9
+[2026-03-09 23:40:36,513: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:36,513 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:36,513: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:36,514: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:36,514 INFO sqlalchemy.engine.Engine UPDATE design_runs SET current_step=$1::VARCHAR, steps=$2::JSON, updated_at=$3::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $4::VARCHAR
+[2026-03-09 23:40:36,514: INFO/ForkPoolWorker-8] UPDATE design_runs SET current_step=$1::VARCHAR, steps=$2::JSON, updated_at=$3::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $4::VARCHAR
+[2026-03-09 23:40:36,516: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:36,515 INFO sqlalchemy.engine.Engine [cached since 11.7s ago] ('netlist_generation', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (1005 characters truncated) ... "", "status": "running", "started_at": "2026-03-09T20:40:36.510036+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 36, 510112, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:36,515: INFO/ForkPoolWorker-8] [cached since 11.7s ago] ('netlist_generation', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (1005 characters truncated) ... "", "status": "running", "started_at": "2026-03-09T20:40:36.510036+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 36, 510112, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:36,519: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:36,519 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:36,519: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:36,525: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:36,524 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:36,524: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:36,526: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:36,526 INFO sqlalchemy.engine.Engine INSERT INTO agent_messages (run_id, role, content, action_type, pipeline_step, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR, $7::TIMESTAMP WITH TIME ZONE, $8::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:36,526: INFO/ForkPoolWorker-8] INSERT INTO agent_messages (run_id, role, content, action_type, pipeline_step, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR, $7::TIMESTAMP WITH TIME ZONE, $8::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:36,527: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:36,527 INFO sqlalchemy.engine.Engine [cached since 11.71s ago] ('04f607ac-2828-4b9f-918a-dab256e4e37f', 'agent', 'Generating initial SPICE netlist...', None, 'netlist_generation', '10244e8f-9a5a-457a-b1a3-4f4d63434a45', datetime.datetime(2026, 3, 9, 20, 40, 36, 522697, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 36, 526160, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:36,527: INFO/ForkPoolWorker-8] [cached since 11.71s ago] ('04f607ac-2828-4b9f-918a-dab256e4e37f', 'agent', 'Generating initial SPICE netlist...', None, 'netlist_generation', '10244e8f-9a5a-457a-b1a3-4f4d63434a45', datetime.datetime(2026, 3, 9, 20, 40, 36, 522697, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 36, 526160, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:36,531: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:36,531 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:36,531: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:36,535: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:36 [debug    ] openai_request                 json_mode=True model=gpt-4o n_messages=2 run_id=04f607ac-2828-4b9f-918a-dab256e4e37f task_id=063b67a3-8786-45e7-a815-8fced6b7b4b9
+[2026-03-09 23:40:42,493: INFO/ForkPoolWorker-8] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-03-09 23:40:42,503: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42 [debug    ] openai_response_received       run_id=04f607ac-2828-4b9f-918a-dab256e4e37f task_id=063b67a3-8786-45e7-a815-8fced6b7b4b9 tokens=850
+[2026-03-09 23:40:42,506: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42 [info     ] netlist_generated              format=spice run_id=04f607ac-2828-4b9f-918a-dab256e4e37f task_id=063b67a3-8786-45e7-a815-8fced6b7b4b9
+[2026-03-09 23:40:42,511: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,510 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:42,510: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:42,513: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,513 INFO sqlalchemy.engine.Engine INSERT INTO generated_netlists (run_id, iteration_id, raw_spice, format, generated_at, generation_attempt, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::INTEGER, $7::VARCHAR, $8::TIMESTAMP WITH TIME ZONE, $9::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:42,513: INFO/ForkPoolWorker-8] INSERT INTO generated_netlists (run_id, iteration_id, raw_spice, format, generated_at, generation_attempt, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::INTEGER, $7::VARCHAR, $8::TIMESTAMP WITH TIME ZONE, $9::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:42,514: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,514 INFO sqlalchemy.engine.Engine [generated in 0.00134s] ('04f607ac-2828-4b9f-918a-dab256e4e37f', None, "* Two-Stage Operational Amplifier\n\n.include 'tsmc018.lib'\n\n* Supply Voltages\nVDD vdd 0 DC 1.8\nVSS vss 0 DC 0\n\n* Differential Input Stage\nM1  ... (448 characters truncated) ... .measure ac gain_max max vdb(vout)\n.measure ac gain_min min vdb(vout)\n.measure ac gain_margin param='gain_max - gain_min'\n\n* End of netlist\n.end", 'spice', '2026-03-09T20:40:42.506819+00:00', 1, '6003d055-8f09-4bfc-95e8-6afe79fb98f9', datetime.datetime(2026, 3, 9, 20, 40, 42, 513183, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 42, 513186, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:42,514: INFO/ForkPoolWorker-8] [generated in 0.00134s] ('04f607ac-2828-4b9f-918a-dab256e4e37f', None, "* Two-Stage Operational Amplifier\n\n.include 'tsmc018.lib'\n\n* Supply Voltages\nVDD vdd 0 DC 1.8\nVSS vss 0 DC 0\n\n* Differential Input Stage\nM1  ... (448 characters truncated) ... .measure ac gain_max max vdb(vout)\n.measure ac gain_min min vdb(vout)\n.measure ac gain_margin param='gain_max - gain_min'\n\n* End of netlist\n.end", 'spice', '2026-03-09T20:40:42.506819+00:00', 1, '6003d055-8f09-4bfc-95e8-6afe79fb98f9', datetime.datetime(2026, 3, 9, 20, 40, 42, 513183, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 42, 513186, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:42,520: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,520 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:42,520: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:42,526: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,525 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:42,525: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:42,528: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,527 INFO sqlalchemy.engine.Engine UPDATE design_runs SET status=$1::VARCHAR, current_step=$2::VARCHAR, steps=$3::JSON, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:40:42,527: INFO/ForkPoolWorker-8] UPDATE design_runs SET status=$1::VARCHAR, current_step=$2::VARCHAR, steps=$3::JSON, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:40:42,529: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,529 INFO sqlalchemy.engine.Engine [generated in 0.00185s] ('validating', 'validation', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (1349 characters truncated) ... "", "status": "running", "started_at": "2026-03-09T20:40:42.523356+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 42, 523405, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:42,529: INFO/ForkPoolWorker-8] [generated in 0.00185s] ('validating', 'validation', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (1349 characters truncated) ... "", "status": "running", "started_at": "2026-03-09T20:40:42.523356+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 42, 523405, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:42,534: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,533 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:42,533: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:42,540: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,540 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:42,540: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:42,542: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,542 INFO sqlalchemy.engine.Engine UPDATE design_runs SET status=$1::VARCHAR, current_step=$2::VARCHAR, steps=$3::JSON, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:40:42,542: INFO/ForkPoolWorker-8] UPDATE design_runs SET status=$1::VARCHAR, current_step=$2::VARCHAR, steps=$3::JSON, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:40:42,543: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,543 INFO sqlalchemy.engine.Engine [cached since 0.01547s ago] ('simulating', 'simulation_run', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (1701 characters truncated) ... "", "status": "running", "started_at": "2026-03-09T20:40:42.536277+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 42, 536328, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:42,543: INFO/ForkPoolWorker-8] [cached since 0.01547s ago] ('simulating', 'simulation_run', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (1701 characters truncated) ... "", "status": "running", "started_at": "2026-03-09T20:40:42.536277+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 42, 536328, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:42,546: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,546 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:42,546: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:42,550: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,549 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:42,549: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:42,551: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,550 INFO sqlalchemy.engine.Engine INSERT INTO agent_messages (run_id, role, content, action_type, pipeline_step, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR, $7::TIMESTAMP WITH TIME ZONE, $8::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:42,550: INFO/ForkPoolWorker-8] INSERT INTO agent_messages (run_id, role, content, action_type, pipeline_step, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR, $7::TIMESTAMP WITH TIME ZONE, $8::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:42,551: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,551 INFO sqlalchemy.engine.Engine [cached since 17.73s ago] ('04f607ac-2828-4b9f-918a-dab256e4e37f', 'agent', 'Running Xyce simulation...', None, 'simulation_run', 'aae7870d-b176-4668-8ef5-adba429a9e4f', datetime.datetime(2026, 3, 9, 20, 40, 42, 548130, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 42, 550804, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:42,551: INFO/ForkPoolWorker-8] [cached since 17.73s ago] ('04f607ac-2828-4b9f-918a-dab256e4e37f', 'agent', 'Running Xyce simulation...', None, 'simulation_run', 'aae7870d-b176-4668-8ef5-adba429a9e4f', datetime.datetime(2026, 3, 9, 20, 40, 42, 548130, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 42, 550804, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:42,555: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,554 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:42,554: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:42,558: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,558 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:42,558: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:42,560: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,560 INFO sqlalchemy.engine.Engine INSERT INTO simulation_jobs (run_id, iteration_id, netlist_id, status, exit_code, stdout, stderr, duration_ms, started_at, completed_at, container_id, docker_image, workspace_path, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::INTEGER, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::VARCHAR, $13::VARCHAR, $14::VARCHAR, $15::TIMESTAMP WITH TIME ZONE, $16::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:42,560: INFO/ForkPoolWorker-8] INSERT INTO simulation_jobs (run_id, iteration_id, netlist_id, status, exit_code, stdout, stderr, duration_ms, started_at, completed_at, container_id, docker_image, workspace_path, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::INTEGER, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::VARCHAR, $13::VARCHAR, $14::VARCHAR, $15::TIMESTAMP WITH TIME ZONE, $16::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:42,561: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,561 INFO sqlalchemy.engine.Engine [generated in 0.00097s] ('04f607ac-2828-4b9f-918a-dab256e4e37f', None, '6003d055-8f09-4bfc-95e8-6afe79fb98f9', 'running', None, None, None, None, '2026-03-09T20:40:42.536277+00:00', None, None, None, None, '192ab2b8-4962-43dc-b96c-44d9764b007b', datetime.datetime(2026, 3, 9, 20, 40, 42, 560356, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 42, 560361, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:42,561: INFO/ForkPoolWorker-8] [generated in 0.00097s] ('04f607ac-2828-4b9f-918a-dab256e4e37f', None, '6003d055-8f09-4bfc-95e8-6afe79fb98f9', 'running', None, None, None, None, '2026-03-09T20:40:42.536277+00:00', None, None, None, None, '192ab2b8-4962-43dc-b96c-44d9764b007b', datetime.datetime(2026, 3, 9, 20, 40, 42, 560356, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 42, 560361, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:42,566: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:42,565 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:42,565: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:44,574: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,574 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:44,574: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:44,577: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,576 INFO sqlalchemy.engine.Engine UPDATE simulation_jobs SET status=$1::VARCHAR, exit_code=$2::INTEGER, stdout=$3::VARCHAR, stderr=$4::VARCHAR, duration_ms=$5::INTEGER, completed_at=$6::VARCHAR, updated_at=$7::TIMESTAMP WITH TIME ZONE WHERE simulation_jobs.id = $8::VARCHAR
+[2026-03-09 23:40:44,576: INFO/ForkPoolWorker-8] UPDATE simulation_jobs SET status=$1::VARCHAR, exit_code=$2::INTEGER, stdout=$3::VARCHAR, stderr=$4::VARCHAR, duration_ms=$5::INTEGER, completed_at=$6::VARCHAR, updated_at=$7::TIMESTAMP WITH TIME ZONE WHERE simulation_jobs.id = $8::VARCHAR
+[2026-03-09 23:40:44,578: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,577 INFO sqlalchemy.engine.Engine [generated in 0.00139s] ('completed', 0, 'Xyce(TM) Parallel Electronic Simulator\nCopyright 2002-2023 National Technology & Engineering Solutions of Sandia, LLC\nVersion 7.6 (Serial) Dec 12 2 ... (187 characters truncated) ... nts\nOperating point solution converged\n\nMeasure Results:\n  gain_dc   = 6.81e+01 (dB)\n  ugbw      = 1.23e+07 (Hz)\n  pm        = 6.20e+01 (deg)\n', '', 2100, '2026-03-09T20:40:44.571291+00:00', datetime.datetime(2026, 3, 9, 20, 40, 44, 576559, tzinfo=datetime.timezone.utc), '192ab2b8-4962-43dc-b96c-44d9764b007b')
+[2026-03-09 23:40:44,577: INFO/ForkPoolWorker-8] [generated in 0.00139s] ('completed', 0, 'Xyce(TM) Parallel Electronic Simulator\nCopyright 2002-2023 National Technology & Engineering Solutions of Sandia, LLC\nVersion 7.6 (Serial) Dec 12 2 ... (187 characters truncated) ... nts\nOperating point solution converged\n\nMeasure Results:\n  gain_dc   = 6.81e+01 (dB)\n  ugbw      = 1.23e+07 (Hz)\n  pm        = 6.20e+01 (deg)\n', '', 2100, '2026-03-09T20:40:44.571291+00:00', datetime.datetime(2026, 3, 9, 20, 40, 44, 576559, tzinfo=datetime.timezone.utc), '192ab2b8-4962-43dc-b96c-44d9764b007b')
+[2026-03-09 23:40:44,584: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,583 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:44,583: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:44,594: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,594 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:44,594: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:44,596: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,596 INFO sqlalchemy.engine.Engine UPDATE design_runs SET status=$1::VARCHAR, current_step=$2::VARCHAR, steps=$3::JSON, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:40:44,596: INFO/ForkPoolWorker-8] UPDATE design_runs SET status=$1::VARCHAR, current_step=$2::VARCHAR, steps=$3::JSON, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:40:44,597: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,597 INFO sqlalchemy.engine.Engine [cached since 2.07s ago] ('analyzing', 'metric_extraction', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (2061 characters truncated) ... "", "status": "running", "started_at": "2026-03-09T20:40:44.588545+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 44, 588612, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:44,597: INFO/ForkPoolWorker-8] [cached since 2.07s ago] ('analyzing', 'metric_extraction', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (2061 characters truncated) ... "", "status": "running", "started_at": "2026-03-09T20:40:44.588545+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 44, 588612, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:44,600: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,600 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:44,600: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:44,604: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,604 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:44,604: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:44,606: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,606 INFO sqlalchemy.engine.Engine INSERT INTO simulation_results (job_id, run_id, iteration_id, metrics, ac_response, phase_response, transient_response, simulated_at, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::JSON, $7::JSON, $8::VARCHAR, $9::VARCHAR, $10::TIMESTAMP WITH TIME ZONE, $11::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:44,606: INFO/ForkPoolWorker-8] INSERT INTO simulation_results (job_id, run_id, iteration_id, metrics, ac_response, phase_response, transient_response, simulated_at, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::JSON, $7::JSON, $8::VARCHAR, $9::VARCHAR, $10::TIMESTAMP WITH TIME ZONE, $11::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:44,606: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,606 INFO sqlalchemy.engine.Engine [generated in 0.00134s] ('192ab2b8-4962-43dc-b96c-44d9764b007b', '04f607ac-2828-4b9f-918a-dab256e4e37f', None, '[{"id": "gain", "label": "DC Gain", "value": 68.1, "unit": "dB", "target": 60.0, "pass_fail": "pass"}, {"id": "bw", "label": "GBW", "value": 12.3, "u ... (7 characters truncated) ... MHz", "target": null, "pass_fail": null}, {"id": "pm", "label": "Phase Margin", "value": 62.0, "unit": "\\u00b0", "target": null, "pass_fail": null}]', '[{"x": 10.0, "y": 68.09999999999712}, {"x": 11.220184543019636, "y": 68.09999999999638}, {"x": 12.589254117941675, "y": 68.09999999999545}, {"x": 14. ... (7716 characters truncated) ... , {"x": 794328234.7242821, "y": 31.897061008858444}, {"x": 891250938.1337477, "y": 30.897275138009007}, {"x": 1000000000.0, "y": 29.897445234363374}]', '[{"x": 10.0, "y": -90.00004705939939}, {"x": 11.220184543019636, "y": -90.00005280151457}, {"x": 12.589254117941675, "y": -90.00005924427376}, {"x":  ... (7916 characters truncated) ... "x": 794328234.7242821, "y": -212.61503487633547}, {"x": 891250938.1337477, "y": -215.81093010886153}, {"x": 1000000000.0, "y": -219.10086854097034}]', '[{"x": 0.0, "y": 0}, {"x": 1.0, "y": 0}, {"x": 2.0, "y": 0}, {"x": 3.0, "y": 0}, {"x": 4.0, "y": 0}, {"x": 5.0, "y": 0}, {"x": 6.0, "y": 0}, {"x": 7. ... (18225 characters truncated) ...  497.0, "y": 0.8999999999852341}, {"x": 498.0, "y": 0.899999999986032}, {"x": 499.0, "y": 0.8999999999867868}, {"x": 500.0, "y": 0.8999999999875009}]', '2026-03-09T20:40:44.602611+00:00', 'fa9f2b77-5f67-438d-9090-984dda87edbc', datetime.datetime(2026, 3, 9, 20, 40, 44, 605273, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 44, 605275, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:44,606: INFO/ForkPoolWorker-8] [generated in 0.00134s] ('192ab2b8-4962-43dc-b96c-44d9764b007b', '04f607ac-2828-4b9f-918a-dab256e4e37f', None, '[{"id": "gain", "label": "DC Gain", "value": 68.1, "unit": "dB", "target": 60.0, "pass_fail": "pass"}, {"id": "bw", "label": "GBW", "value": 12.3, "u ... (7 characters truncated) ... MHz", "target": null, "pass_fail": null}, {"id": "pm", "label": "Phase Margin", "value": 62.0, "unit": "\\u00b0", "target": null, "pass_fail": null}]', '[{"x": 10.0, "y": 68.09999999999712}, {"x": 11.220184543019636, "y": 68.09999999999638}, {"x": 12.589254117941675, "y": 68.09999999999545}, {"x": 14. ... (7716 characters truncated) ... , {"x": 794328234.7242821, "y": 31.897061008858444}, {"x": 891250938.1337477, "y": 30.897275138009007}, {"x": 1000000000.0, "y": 29.897445234363374}]', '[{"x": 10.0, "y": -90.00004705939939}, {"x": 11.220184543019636, "y": -90.00005280151457}, {"x": 12.589254117941675, "y": -90.00005924427376}, {"x":  ... (7916 characters truncated) ... "x": 794328234.7242821, "y": -212.61503487633547}, {"x": 891250938.1337477, "y": -215.81093010886153}, {"x": 1000000000.0, "y": -219.10086854097034}]', '[{"x": 0.0, "y": 0}, {"x": 1.0, "y": 0}, {"x": 2.0, "y": 0}, {"x": 3.0, "y": 0}, {"x": 4.0, "y": 0}, {"x": 5.0, "y": 0}, {"x": 6.0, "y": 0}, {"x": 7. ... (18225 characters truncated) ...  497.0, "y": 0.8999999999852341}, {"x": 498.0, "y": 0.899999999986032}, {"x": 499.0, "y": 0.8999999999867868}, {"x": 500.0, "y": 0.8999999999875009}]', '2026-03-09T20:40:44.602611+00:00', 'fa9f2b77-5f67-438d-9090-984dda87edbc', datetime.datetime(2026, 3, 9, 20, 40, 44, 605273, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 44, 605275, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:44,614: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,614 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:44,614: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:44,618: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,617 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:44,617: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:44,619: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,619 INFO sqlalchemy.engine.Engine UPDATE design_runs SET status=$1::VARCHAR, current_step=$2::VARCHAR, steps=$3::JSON, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:40:44,619: INFO/ForkPoolWorker-8] UPDATE design_runs SET status=$1::VARCHAR, current_step=$2::VARCHAR, steps=$3::JSON, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:40:44,620: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,620 INFO sqlalchemy.engine.Engine [cached since 2.093s ago] ('optimizing', 'optimization_loop', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (2421 characters truncated) ... "", "status": "running", "started_at": "2026-03-09T20:40:44.616265+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 44, 616286, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:44,620: INFO/ForkPoolWorker-8] [cached since 2.093s ago] ('optimizing', 'optimization_loop', '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (2421 characters truncated) ... "", "status": "running", "started_at": "2026-03-09T20:40:44.616265+00:00", "completed_at": null, "duration_ms": null, "logs": [], "reasoning": null}]', datetime.datetime(2026, 3, 9, 20, 40, 44, 616286, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:44,622: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,622 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:44,622: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:44,625: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,625 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:44,625: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:44,626: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,626 INFO sqlalchemy.engine.Engine INSERT INTO agent_messages (run_id, role, content, action_type, pipeline_step, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR, $7::TIMESTAMP WITH TIME ZONE, $8::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:44,626: INFO/ForkPoolWorker-8] INSERT INTO agent_messages (run_id, role, content, action_type, pipeline_step, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR, $7::TIMESTAMP WITH TIME ZONE, $8::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:44,626: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,626 INFO sqlalchemy.engine.Engine [cached since 19.81s ago] ('04f607ac-2828-4b9f-918a-dab256e4e37f', 'agent', 'Running optimization loop...', None, 'optimization_loop', 'f0bfcdbe-1c49-4552-8bee-86b91914f6b4', datetime.datetime(2026, 3, 9, 20, 40, 44, 624321, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 44, 626153, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:44,626: INFO/ForkPoolWorker-8] [cached since 19.81s ago] ('04f607ac-2828-4b9f-918a-dab256e4e37f', 'agent', 'Running optimization loop...', None, 'optimization_loop', 'f0bfcdbe-1c49-4552-8bee-86b91914f6b4', datetime.datetime(2026, 3, 9, 20, 40, 44, 624321, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 44, 626153, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:44,628: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,628 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:44,628: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:44,631: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44 [info     ] optimization_converged         iteration=1 met=1 run_id=04f607ac-2828-4b9f-918a-dab256e4e37f task_id=063b67a3-8786-45e7-a815-8fced6b7b4b9 total=1
+[2026-03-09 23:40:44,633: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,633 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:44,633: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:44,635: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,635 INFO sqlalchemy.engine.Engine UPDATE design_runs SET design_summary=$1::JSON, updated_at=$2::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $3::VARCHAR
+[2026-03-09 23:40:44,635: INFO/ForkPoolWorker-8] UPDATE design_runs SET design_summary=$1::JSON, updated_at=$2::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $3::VARCHAR
+[2026-03-09 23:40:44,636: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,636 INFO sqlalchemy.engine.Engine [generated in 0.00141s] ('{"topologyName": "two-stage", "topologyDescription": "A two-stage operational amplifier consisting of a differential input stage followed by a gain s ... (799 characters truncated) ...  stage"}], "operatingAssumptions": ["VDD = 1.8V", "Temperature = 27\\u00b0C"], "confidenceScore": 0.95, "biasCurrentUA": 100, "powerEstimateUW": 740}', datetime.datetime(2026, 3, 9, 20, 40, 44, 635206, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:44,636: INFO/ForkPoolWorker-8] [generated in 0.00141s] ('{"topologyName": "two-stage", "topologyDescription": "A two-stage operational amplifier consisting of a differential input stage followed by a gain s ... (799 characters truncated) ...  stage"}], "operatingAssumptions": ["VDD = 1.8V", "Temperature = 27\\u00b0C"], "confidenceScore": 0.95, "biasCurrentUA": 100, "powerEstimateUW": 740}', datetime.datetime(2026, 3, 9, 20, 40, 44, 635206, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:44,641: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,640 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:44,640: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:44,644: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,644 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:44,644: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:44,645: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,644 INFO sqlalchemy.engine.Engine UPDATE design_runs SET status=$1::VARCHAR, current_step=$2::VARCHAR, steps=$3::JSON, completed_at=$4::VARCHAR, updated_at=$5::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $6::VARCHAR
+[2026-03-09 23:40:44,644: INFO/ForkPoolWorker-8] UPDATE design_runs SET status=$1::VARCHAR, current_step=$2::VARCHAR, steps=$3::JSON, completed_at=$4::VARCHAR, updated_at=$5::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $6::VARCHAR
+[2026-03-09 23:40:44,645: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,645 INFO sqlalchemy.engine.Engine [generated in 0.00065s] ('completed', None, '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (2966 characters truncated) ... ": null, "logs": [{"timestamp": "2026-03-09T20:40:44.642497+00:00", "message": "Design recommendation ready", "type": "result"}], "reasoning": null}]', '2026-03-09T20:40:44.642510+00:00', datetime.datetime(2026, 3, 9, 20, 40, 44, 644899, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:44,645: INFO/ForkPoolWorker-8] [generated in 0.00065s] ('completed', None, '[{"id": "step-requirement_parsing", "label": "Requirement Parsing", "description": "", "status": "complete", "started_at": "2026-03-09T20:40:24.81164 ... (2966 characters truncated) ... ": null, "logs": [{"timestamp": "2026-03-09T20:40:44.642497+00:00", "message": "Design recommendation ready", "type": "result"}], "reasoning": null}]', '2026-03-09T20:40:44.642510+00:00', datetime.datetime(2026, 3, 9, 20, 40, 44, 644899, tzinfo=datetime.timezone.utc), '04f607ac-2828-4b9f-918a-dab256e4e37f')
+[2026-03-09 23:40:44,649: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,649 INFO sqlalchemy.engine.Engine INSERT INTO candidate_designs (run_id, rank, topology_name, status, gain_db, bandwidth_mhz, phase_margin_deg, power_mw, noise_nv_sqrt_hz, score, rejection_reason, selection_reason, scores_detail, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::INTEGER, $3::VARCHAR, $4::VARCHAR, $5::FLOAT, $6::FLOAT, $7::FLOAT, $8::FLOAT, $9::FLOAT, $10::FLOAT, $11::VARCHAR, $12::VARCHAR, $13::JSON, $14::VARCHAR, $15::TIMESTAMP WITH TIME ZONE, $16::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:44,649: INFO/ForkPoolWorker-8] INSERT INTO candidate_designs (run_id, rank, topology_name, status, gain_db, bandwidth_mhz, phase_margin_deg, power_mw, noise_nv_sqrt_hz, score, rejection_reason, selection_reason, scores_detail, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::INTEGER, $3::VARCHAR, $4::VARCHAR, $5::FLOAT, $6::FLOAT, $7::FLOAT, $8::FLOAT, $9::FLOAT, $10::FLOAT, $11::VARCHAR, $12::VARCHAR, $13::JSON, $14::VARCHAR, $15::TIMESTAMP WITH TIME ZONE, $16::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:44,650: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,650 INFO sqlalchemy.engine.Engine [generated in 0.00067s] [('04f607ac-2828-4b9f-918a-dab256e4e37f', 1, 'two-stage', 'selected', None, None, None, None, None, 95.0, None, 'Best overall fit for constraints', '{}', 'e97f0d5e-8fc0-4299-baea-f291b23153fc', datetime.datetime(2026, 3, 9, 20, 40, 44, 649605, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 44, 649607, tzinfo=datetime.timezone.utc)), ('04f607ac-2828-4b9f-918a-dab256e4e37f', 2, 'folded-cascode', 'rejected', None, None, None, None, None, 78, 'While the folded-cascode topology offers good bandwidth and moderate gain, it typically does not achieve the required 60 dB DC gain as easily as the two-stage topology without additional complexity.', None, '{}', 'd0884506-fc83-4d15-a8a4-ab5251ec6703', datetime.datetime(2026, 3, 9, 20, 40, 44, 649608, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 44, 649609, tzinfo=datetime.timezone.utc)), ('04f607ac-2828-4b9f-918a-dab256e4e37f', 3, 'telescopic-cascode', 'rejected', None, None, None, None, None, 70, 'The telescopic-cascode topology provides excellent bandwidth and low power consumption but falls short in achieving the required DC gain of 60 dB due to its limited gain per stage.', None, '{}', 'dfa8c9c5-e7ad-4bf7-b783-1216839a639d', datetime.datetime(2026, 3, 9, 20, 40, 44, 649609, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 44, 649610, tzinfo=datetime.timezone.utc))]
+[2026-03-09 23:40:44,650: INFO/ForkPoolWorker-8] [generated in 0.00067s] [('04f607ac-2828-4b9f-918a-dab256e4e37f', 1, 'two-stage', 'selected', None, None, None, None, None, 95.0, None, 'Best overall fit for constraints', '{}', 'e97f0d5e-8fc0-4299-baea-f291b23153fc', datetime.datetime(2026, 3, 9, 20, 40, 44, 649605, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 44, 649607, tzinfo=datetime.timezone.utc)), ('04f607ac-2828-4b9f-918a-dab256e4e37f', 2, 'folded-cascode', 'rejected', None, None, None, None, None, 78, 'While the folded-cascode topology offers good bandwidth and moderate gain, it typically does not achieve the required 60 dB DC gain as easily as the two-stage topology without additional complexity.', None, '{}', 'd0884506-fc83-4d15-a8a4-ab5251ec6703', datetime.datetime(2026, 3, 9, 20, 40, 44, 649608, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 44, 649609, tzinfo=datetime.timezone.utc)), ('04f607ac-2828-4b9f-918a-dab256e4e37f', 3, 'telescopic-cascode', 'rejected', None, None, None, None, None, 70, 'The telescopic-cascode topology provides excellent bandwidth and low power consumption but falls short in achieving the required DC gain of 60 dB due to its limited gain per stage.', None, '{}', 'dfa8c9c5-e7ad-4bf7-b783-1216839a639d', datetime.datetime(2026, 3, 9, 20, 40, 44, 649609, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 44, 649610, tzinfo=datetime.timezone.utc))]
+[2026-03-09 23:40:44,654: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,653 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:44,653: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:44,657: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,657 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:40:44,657: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:40:44,657: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,657 INFO sqlalchemy.engine.Engine INSERT INTO agent_messages (run_id, role, content, action_type, pipeline_step, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR, $7::TIMESTAMP WITH TIME ZONE, $8::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:44,657: INFO/ForkPoolWorker-8] INSERT INTO agent_messages (run_id, role, content, action_type, pipeline_step, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR, $7::TIMESTAMP WITH TIME ZONE, $8::TIMESTAMP WITH TIME ZONE)
+[2026-03-09 23:40:44,658: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,658 INFO sqlalchemy.engine.Engine [cached since 19.84s ago] ('04f607ac-2828-4b9f-918a-dab256e4e37f', 'agent', '✅ Design complete. All analysis steps finished.', 'info', 'recommendation_ready', '0f058e95-f176-40c2-bd4e-dadbb79a95d5', datetime.datetime(2026, 3, 9, 20, 40, 44, 655545, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 44, 657780, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:44,658: INFO/ForkPoolWorker-8] [cached since 19.84s ago] ('04f607ac-2828-4b9f-918a-dab256e4e37f', 'agent', '✅ Design complete. All analysis steps finished.', 'info', 'recommendation_ready', '0f058e95-f176-40c2-bd4e-dadbb79a95d5', datetime.datetime(2026, 3, 9, 20, 40, 44, 655545, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 40, 44, 657780, tzinfo=datetime.timezone.utc))
+[2026-03-09 23:40:44,660: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44,660 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:40:44,660: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:40:44,662: WARNING/ForkPoolWorker-8] 2026-03-09 23:40:44 [info     ] pipeline_task_complete         run_id=04f607ac-2828-4b9f-918a-dab256e4e37f task_id=063b67a3-8786-45e7-a815-8fced6b7b4b9
+[2026-03-09 23:40:44,665: INFO/ForkPoolWorker-8] Task app.tasks.orchestration.run_design_pipeline[063b67a3-8786-45e7-a815-8fced6b7b4b9] succeeded in 20.278060792014003s: {'run_id': '04f607ac-2828-4b9f-918a-dab256e4e37f', 'status': 'completed'}
+[2026-03-09 23:41:30,170: INFO/MainProcess] Task app.tasks.orchestration.run_design_pipeline[ecf0d1f7-a0a7-411d-90b0-36b179c9d879] received
+[2026-03-09 23:41:30,174: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:30 [info     ] pipeline_task_started          run_id=57fc7676-dd8f-48e5-90a8-b184806ee2c7 task_id=ecf0d1f7-a0a7-411d-90b0-36b179c9d879
+[2026-03-09 23:41:30,180: ERROR/ForkPoolWorker-8] Exception terminating connection <AdaptedConnection <asyncpg.connection.Connection object at 0x10baa1030>>
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 373, in _close_connection
+    self._dialect.do_terminate(connection)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1127, in do_terminate
+    dbapi_connection.terminate()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/connectors/asyncio.py", line 402, in terminate
+    self.await_(asyncio.shield(self._terminate_graceful_close()))  # type: ignore[attr-defined] # noqa: E501
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 912, in _terminate_graceful_close
+    await self._connection.close(timeout=2)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 1513, in close
+    await self._protocol.close(timeout)
+  File "asyncpg/protocol/protocol.pyx", line 617, in close
+  File "asyncpg/protocol/protocol.pyx", line 650, in asyncpg.protocol.protocol.BaseProtocol._request_cancel
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 1682, in _cancel_current_command
+    self._cancellations.add(self._loop.create_task(self._cancel(waiter)))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 435, in create_task
+    self._check_closed()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+[2026-03-09 23:41:30,191: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:30 [error    ] pipeline_task_failed           error="Task <Task pending name='Task-7' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop" run_id=57fc7676-dd8f-48e5-90a8-b184806ee2c7 task_id=ecf0d1f7-a0a7-411d-90b0-36b179c9d879
+[2026-03-09 23:41:30,226: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:30,225 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:41:30,225: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:41:30,227: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:30,226 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:41:30,226: INFO/ForkPoolWorker-8] SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:41:30,227: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:30,227 INFO sqlalchemy.engine.Engine [cached since 65.43s ago] ('57fc7676-dd8f-48e5-90a8-b184806ee2c7',)
+[2026-03-09 23:41:30,227: INFO/ForkPoolWorker-8] [cached since 65.43s ago] ('57fc7676-dd8f-48e5-90a8-b184806ee2c7',)
+[2026-03-09 23:41:30,236: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:30,235 INFO sqlalchemy.engine.Engine UPDATE design_runs SET status=$1::VARCHAR, completed_at=$2::VARCHAR, error_message=$3::VARCHAR, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:41:30,235: INFO/ForkPoolWorker-8] UPDATE design_runs SET status=$1::VARCHAR, completed_at=$2::VARCHAR, error_message=$3::VARCHAR, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:41:30,237: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:30,236 INFO sqlalchemy.engine.Engine [generated in 0.00122s] ('failed', '2026-03-09T20:41:30.234911+00:00', "Task <Task pending name='Task-7' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[ ... (103 characters truncated) ... ns/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop", datetime.datetime(2026, 3, 9, 20, 41, 30, 235625, tzinfo=datetime.timezone.utc), '57fc7676-dd8f-48e5-90a8-b184806ee2c7')
+[2026-03-09 23:41:30,236: INFO/ForkPoolWorker-8] [generated in 0.00122s] ('failed', '2026-03-09T20:41:30.234911+00:00', "Task <Task pending name='Task-7' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[ ... (103 characters truncated) ... ns/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop", datetime.datetime(2026, 3, 9, 20, 41, 30, 235625, tzinfo=datetime.timezone.utc), '57fc7676-dd8f-48e5-90a8-b184806ee2c7')
+[2026-03-09 23:41:30,240: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:30,240 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:41:30,240: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:41:30,257: ERROR/ForkPoolWorker-8] Task app.tasks.orchestration.run_design_pipeline[ecf0d1f7-a0a7-411d-90b0-36b179c9d879] raised unexpected: RuntimeError("Task <Task pending name='Task-7' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop")
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/trace.py", line 479, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/trace.py", line 779, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py", line 65, in run_design_pipeline
+    result = asyncio.run(_async_pipeline(run_id, self))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py", line 101, in _async_pipeline
+    run = (await db.execute(select(DesignRun).where(DesignRun.id == run_id))).scalar_one_or_none()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/session.py", line 449, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2239, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2108, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1187, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1371, in _checkout
+    with util.safe_reraise():
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1309, in _checkout
+    result = pool._dialect._do_ping_w_event(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 729, in _do_ping_w_event
+    return self.do_ping(dbapi_connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1160, in do_ping
+    dbapi_connection.ping()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 818, in ping
+    self._handle_exception(error)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 799, in _handle_exception
+    raise error
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 816, in ping
+    _ = self.await_(self._async_ping())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 825, in _async_ping
+    await tr.start()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/transaction.py", line 146, in start
+    await self._connection.execute(query)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 354, in execute
+    result = await self._protocol.query(query, timeout)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 369, in query
+RuntimeError: Task <Task pending name='Task-7' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop
+[2026-03-09 23:41:36,414: INFO/MainProcess] Task app.tasks.orchestration.run_design_pipeline[cf63b157-2d57-4744-a7a2-c5613a45a592] received
+[2026-03-09 23:41:36,419: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:36 [info     ] pipeline_task_started          run_id=b4f0ff04-1dd0-4421-83f5-b80c2d2274c1 task_id=cf63b157-2d57-4744-a7a2-c5613a45a592
+[2026-03-09 23:41:36,421: ERROR/ForkPoolWorker-8] Exception terminating connection <AdaptedConnection <asyncpg.connection.Connection object at 0x10c302a70>>
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 373, in _close_connection
+    self._dialect.do_terminate(connection)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1127, in do_terminate
+    dbapi_connection.terminate()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/connectors/asyncio.py", line 402, in terminate
+    self.await_(asyncio.shield(self._terminate_graceful_close()))  # type: ignore[attr-defined] # noqa: E501
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 912, in _terminate_graceful_close
+    await self._connection.close(timeout=2)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 1513, in close
+    await self._protocol.close(timeout)
+  File "asyncpg/protocol/protocol.pyx", line 617, in close
+  File "asyncpg/protocol/protocol.pyx", line 650, in asyncpg.protocol.protocol.BaseProtocol._request_cancel
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 1682, in _cancel_current_command
+    self._cancellations.add(self._loop.create_task(self._cancel(waiter)))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 435, in create_task
+    self._check_closed()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+[2026-03-09 23:41:36,425: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:36 [error    ] pipeline_task_failed           error="Task <Task pending name='Task-17' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop" run_id=b4f0ff04-1dd0-4421-83f5-b80c2d2274c1 task_id=cf63b157-2d57-4744-a7a2-c5613a45a592
+[2026-03-09 23:41:36,479: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:36,479 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:41:36,479: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:41:36,480: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:36,479 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:41:36,479: INFO/ForkPoolWorker-8] SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:41:36,480: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:36,480 INFO sqlalchemy.engine.Engine [cached since 71.68s ago] ('b4f0ff04-1dd0-4421-83f5-b80c2d2274c1',)
+[2026-03-09 23:41:36,480: INFO/ForkPoolWorker-8] [cached since 71.68s ago] ('b4f0ff04-1dd0-4421-83f5-b80c2d2274c1',)
+[2026-03-09 23:41:36,489: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:36,489 INFO sqlalchemy.engine.Engine UPDATE design_runs SET status=$1::VARCHAR, completed_at=$2::VARCHAR, error_message=$3::VARCHAR, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:41:36,489: INFO/ForkPoolWorker-8] UPDATE design_runs SET status=$1::VARCHAR, completed_at=$2::VARCHAR, error_message=$3::VARCHAR, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:41:36,490: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:36,490 INFO sqlalchemy.engine.Engine [cached since 6.255s ago] ('failed', '2026-03-09T20:41:36.488386+00:00', "Task <Task pending name='Task-17' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb= ... (104 characters truncated) ... ns/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop", datetime.datetime(2026, 3, 9, 20, 41, 36, 489136, tzinfo=datetime.timezone.utc), 'b4f0ff04-1dd0-4421-83f5-b80c2d2274c1')
+[2026-03-09 23:41:36,490: INFO/ForkPoolWorker-8] [cached since 6.255s ago] ('failed', '2026-03-09T20:41:36.488386+00:00', "Task <Task pending name='Task-17' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb= ... (104 characters truncated) ... ns/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop", datetime.datetime(2026, 3, 9, 20, 41, 36, 489136, tzinfo=datetime.timezone.utc), 'b4f0ff04-1dd0-4421-83f5-b80c2d2274c1')
+[2026-03-09 23:41:36,493: WARNING/ForkPoolWorker-8] 2026-03-09 23:41:36,493 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:41:36,493: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:41:36,502: ERROR/ForkPoolWorker-8] Task app.tasks.orchestration.run_design_pipeline[cf63b157-2d57-4744-a7a2-c5613a45a592] raised unexpected: RuntimeError("Task <Task pending name='Task-17' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop")
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/trace.py", line 479, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/trace.py", line 779, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py", line 65, in run_design_pipeline
+    result = asyncio.run(_async_pipeline(run_id, self))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py", line 101, in _async_pipeline
+    run = (await db.execute(select(DesignRun).where(DesignRun.id == run_id))).scalar_one_or_none()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/session.py", line 449, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2239, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2108, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1187, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1371, in _checkout
+    with util.safe_reraise():
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1309, in _checkout
+    result = pool._dialect._do_ping_w_event(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 729, in _do_ping_w_event
+    return self.do_ping(dbapi_connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1160, in do_ping
+    dbapi_connection.ping()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 818, in ping
+    self._handle_exception(error)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 799, in _handle_exception
+    raise error
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 816, in ping
+    _ = self.await_(self._async_ping())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 825, in _async_ping
+    await tr.start()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/transaction.py", line 146, in start
+    await self._connection.execute(query)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 354, in execute
+    result = await self._protocol.query(query, timeout)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 369, in query
+RuntimeError: Task <Task pending name='Task-17' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop
+[2026-03-09 23:45:40,555: INFO/MainProcess] Task app.tasks.orchestration.run_design_pipeline[b665d67c-5367-49c8-af58-304dc74f85a0] received
+[2026-03-09 23:45:40,560: WARNING/ForkPoolWorker-8] 2026-03-09 23:45:40 [info     ] pipeline_task_started          run_id=f96624ec-d440-4bbc-9f05-b382f78336fb task_id=b665d67c-5367-49c8-af58-304dc74f85a0
+[2026-03-09 23:45:40,561: ERROR/ForkPoolWorker-8] Exception terminating connection <AdaptedConnection <asyncpg.connection.Connection object at 0x10c714310>>
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 373, in _close_connection
+    self._dialect.do_terminate(connection)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1127, in do_terminate
+    dbapi_connection.terminate()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/connectors/asyncio.py", line 402, in terminate
+    self.await_(asyncio.shield(self._terminate_graceful_close()))  # type: ignore[attr-defined] # noqa: E501
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 912, in _terminate_graceful_close
+    await self._connection.close(timeout=2)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 1513, in close
+    await self._protocol.close(timeout)
+  File "asyncpg/protocol/protocol.pyx", line 617, in close
+  File "asyncpg/protocol/protocol.pyx", line 650, in asyncpg.protocol.protocol.BaseProtocol._request_cancel
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 1682, in _cancel_current_command
+    self._cancellations.add(self._loop.create_task(self._cancel(waiter)))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 435, in create_task
+    self._check_closed()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+[2026-03-09 23:45:40,564: WARNING/ForkPoolWorker-8] 2026-03-09 23:45:40 [error    ] pipeline_task_failed           error="Task <Task pending name='Task-27' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop" run_id=f96624ec-d440-4bbc-9f05-b382f78336fb task_id=b665d67c-5367-49c8-af58-304dc74f85a0
+[2026-03-09 23:45:40,602: WARNING/ForkPoolWorker-8] 2026-03-09 23:45:40,601 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:45:40,601: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:45:40,603: WARNING/ForkPoolWorker-8] 2026-03-09 23:45:40,603 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:45:40,603: INFO/ForkPoolWorker-8] SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:45:40,604: WARNING/ForkPoolWorker-8] 2026-03-09 23:45:40,604 INFO sqlalchemy.engine.Engine [cached since 315.8s ago] ('f96624ec-d440-4bbc-9f05-b382f78336fb',)
+[2026-03-09 23:45:40,604: INFO/ForkPoolWorker-8] [cached since 315.8s ago] ('f96624ec-d440-4bbc-9f05-b382f78336fb',)
+[2026-03-09 23:45:40,611: WARNING/ForkPoolWorker-8] 2026-03-09 23:45:40,611 INFO sqlalchemy.engine.Engine UPDATE design_runs SET status=$1::VARCHAR, completed_at=$2::VARCHAR, error_message=$3::VARCHAR, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:45:40,611: INFO/ForkPoolWorker-8] UPDATE design_runs SET status=$1::VARCHAR, completed_at=$2::VARCHAR, error_message=$3::VARCHAR, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:45:40,612: WARNING/ForkPoolWorker-8] 2026-03-09 23:45:40,612 INFO sqlalchemy.engine.Engine [cached since 250.4s ago] ('failed', '2026-03-09T20:45:40.610749+00:00', "Task <Task pending name='Task-27' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb= ... (104 characters truncated) ... ns/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop", datetime.datetime(2026, 3, 9, 20, 45, 40, 611099, tzinfo=datetime.timezone.utc), 'f96624ec-d440-4bbc-9f05-b382f78336fb')
+[2026-03-09 23:45:40,612: INFO/ForkPoolWorker-8] [cached since 250.4s ago] ('failed', '2026-03-09T20:45:40.610749+00:00', "Task <Task pending name='Task-27' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb= ... (104 characters truncated) ... ns/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop", datetime.datetime(2026, 3, 9, 20, 45, 40, 611099, tzinfo=datetime.timezone.utc), 'f96624ec-d440-4bbc-9f05-b382f78336fb')
+[2026-03-09 23:45:40,615: WARNING/ForkPoolWorker-8] 2026-03-09 23:45:40,614 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:45:40,614: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:45:40,624: ERROR/ForkPoolWorker-8] Task app.tasks.orchestration.run_design_pipeline[b665d67c-5367-49c8-af58-304dc74f85a0] raised unexpected: RuntimeError("Task <Task pending name='Task-27' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop")
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/trace.py", line 479, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/trace.py", line 779, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py", line 65, in run_design_pipeline
+    result = asyncio.run(_async_pipeline(run_id, self))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py", line 101, in _async_pipeline
+    run = (await db.execute(select(DesignRun).where(DesignRun.id == run_id))).scalar_one_or_none()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/session.py", line 449, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2239, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2108, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1187, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1371, in _checkout
+    with util.safe_reraise():
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1309, in _checkout
+    result = pool._dialect._do_ping_w_event(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 729, in _do_ping_w_event
+    return self.do_ping(dbapi_connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1160, in do_ping
+    dbapi_connection.ping()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 818, in ping
+    self._handle_exception(error)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 799, in _handle_exception
+    raise error
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 816, in ping
+    _ = self.await_(self._async_ping())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 825, in _async_ping
+    await tr.start()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/transaction.py", line 146, in start
+    await self._connection.execute(query)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 354, in execute
+    result = await self._protocol.query(query, timeout)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 369, in query
+RuntimeError: Task <Task pending name='Task-27' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop
+[2026-03-09 23:46:29,283: INFO/MainProcess] Task app.tasks.orchestration.run_design_pipeline[29430608-ce6f-425f-8042-6f0a944a522f] received
+[2026-03-09 23:46:29,289: WARNING/ForkPoolWorker-8] 2026-03-09 23:46:29 [info     ] pipeline_task_started          run_id=90cf5264-a19f-45ef-ac8d-0f28bb10d167 task_id=29430608-ce6f-425f-8042-6f0a944a522f
+[2026-03-09 23:46:29,291: ERROR/ForkPoolWorker-8] Exception terminating connection <AdaptedConnection <asyncpg.connection.Connection object at 0x10c714b80>>
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 373, in _close_connection
+    self._dialect.do_terminate(connection)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1127, in do_terminate
+    dbapi_connection.terminate()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/connectors/asyncio.py", line 402, in terminate
+    self.await_(asyncio.shield(self._terminate_graceful_close()))  # type: ignore[attr-defined] # noqa: E501
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 912, in _terminate_graceful_close
+    await self._connection.close(timeout=2)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 1513, in close
+    await self._protocol.close(timeout)
+  File "asyncpg/protocol/protocol.pyx", line 617, in close
+  File "asyncpg/protocol/protocol.pyx", line 650, in asyncpg.protocol.protocol.BaseProtocol._request_cancel
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 1682, in _cancel_current_command
+    self._cancellations.add(self._loop.create_task(self._cancel(waiter)))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 435, in create_task
+    self._check_closed()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+[2026-03-09 23:46:29,297: WARNING/ForkPoolWorker-8] 2026-03-09 23:46:29 [error    ] pipeline_task_failed           error="Task <Task pending name='Task-37' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop" run_id=90cf5264-a19f-45ef-ac8d-0f28bb10d167 task_id=29430608-ce6f-425f-8042-6f0a944a522f
+[2026-03-09 23:46:29,328: WARNING/ForkPoolWorker-8] 2026-03-09 23:46:29,328 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:46:29,328: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:46:29,329: WARNING/ForkPoolWorker-8] 2026-03-09 23:46:29,329 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:46:29,329: INFO/ForkPoolWorker-8] SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:46:29,329: WARNING/ForkPoolWorker-8] 2026-03-09 23:46:29,329 INFO sqlalchemy.engine.Engine [cached since 364.5s ago] ('90cf5264-a19f-45ef-ac8d-0f28bb10d167',)
+[2026-03-09 23:46:29,329: INFO/ForkPoolWorker-8] [cached since 364.5s ago] ('90cf5264-a19f-45ef-ac8d-0f28bb10d167',)
+[2026-03-09 23:46:29,337: WARNING/ForkPoolWorker-8] 2026-03-09 23:46:29,337 INFO sqlalchemy.engine.Engine UPDATE design_runs SET status=$1::VARCHAR, completed_at=$2::VARCHAR, error_message=$3::VARCHAR, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:46:29,337: INFO/ForkPoolWorker-8] UPDATE design_runs SET status=$1::VARCHAR, completed_at=$2::VARCHAR, error_message=$3::VARCHAR, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:46:29,338: WARNING/ForkPoolWorker-8] 2026-03-09 23:46:29,338 INFO sqlalchemy.engine.Engine [cached since 299.1s ago] ('failed', '2026-03-09T20:46:29.336930+00:00', "Task <Task pending name='Task-37' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb= ... (104 characters truncated) ... ns/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop", datetime.datetime(2026, 3, 9, 20, 46, 29, 337260, tzinfo=datetime.timezone.utc), '90cf5264-a19f-45ef-ac8d-0f28bb10d167')
+[2026-03-09 23:46:29,338: INFO/ForkPoolWorker-8] [cached since 299.1s ago] ('failed', '2026-03-09T20:46:29.336930+00:00', "Task <Task pending name='Task-37' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb= ... (104 characters truncated) ... ns/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop", datetime.datetime(2026, 3, 9, 20, 46, 29, 337260, tzinfo=datetime.timezone.utc), '90cf5264-a19f-45ef-ac8d-0f28bb10d167')
+[2026-03-09 23:46:29,341: WARNING/ForkPoolWorker-8] 2026-03-09 23:46:29,341 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:46:29,341: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:46:29,347: ERROR/ForkPoolWorker-8] Task app.tasks.orchestration.run_design_pipeline[29430608-ce6f-425f-8042-6f0a944a522f] raised unexpected: RuntimeError("Task <Task pending name='Task-37' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop")
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/trace.py", line 479, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/trace.py", line 779, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py", line 65, in run_design_pipeline
+    result = asyncio.run(_async_pipeline(run_id, self))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py", line 101, in _async_pipeline
+    run = (await db.execute(select(DesignRun).where(DesignRun.id == run_id))).scalar_one_or_none()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/session.py", line 449, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2239, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2108, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1187, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1371, in _checkout
+    with util.safe_reraise():
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1309, in _checkout
+    result = pool._dialect._do_ping_w_event(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 729, in _do_ping_w_event
+    return self.do_ping(dbapi_connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1160, in do_ping
+    dbapi_connection.ping()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 818, in ping
+    self._handle_exception(error)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 799, in _handle_exception
+    raise error
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 816, in ping
+    _ = self.await_(self._async_ping())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 825, in _async_ping
+    await tr.start()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/transaction.py", line 146, in start
+    await self._connection.execute(query)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 354, in execute
+    result = await self._protocol.query(query, timeout)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 369, in query
+RuntimeError: Task <Task pending name='Task-37' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop
+[2026-03-09 23:47:58,252: INFO/MainProcess] Task app.tasks.orchestration.run_design_pipeline[0662c497-bfce-4766-b4f5-897933bfa381] received
+[2026-03-09 23:47:58,256: WARNING/ForkPoolWorker-8] 2026-03-09 23:47:58 [info     ] pipeline_task_started          run_id=e8595219-89f4-408c-8715-3ce24aef35b0 task_id=0662c497-bfce-4766-b4f5-897933bfa381
+[2026-03-09 23:47:58,258: ERROR/ForkPoolWorker-8] Exception terminating connection <AdaptedConnection <asyncpg.connection.Connection object at 0x10c715a80>>
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 373, in _close_connection
+    self._dialect.do_terminate(connection)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1127, in do_terminate
+    dbapi_connection.terminate()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/connectors/asyncio.py", line 402, in terminate
+    self.await_(asyncio.shield(self._terminate_graceful_close()))  # type: ignore[attr-defined] # noqa: E501
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 912, in _terminate_graceful_close
+    await self._connection.close(timeout=2)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 1513, in close
+    await self._protocol.close(timeout)
+  File "asyncpg/protocol/protocol.pyx", line 617, in close
+  File "asyncpg/protocol/protocol.pyx", line 650, in asyncpg.protocol.protocol.BaseProtocol._request_cancel
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 1682, in _cancel_current_command
+    self._cancellations.add(self._loop.create_task(self._cancel(waiter)))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 435, in create_task
+    self._check_closed()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+[2026-03-09 23:47:58,262: WARNING/ForkPoolWorker-8] 2026-03-09 23:47:58 [error    ] pipeline_task_failed           error="Task <Task pending name='Task-47' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop" run_id=e8595219-89f4-408c-8715-3ce24aef35b0 task_id=0662c497-bfce-4766-b4f5-897933bfa381
+[2026-03-09 23:47:58,298: WARNING/ForkPoolWorker-8] 2026-03-09 23:47:58,298 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:47:58,298: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:47:58,299: WARNING/ForkPoolWorker-8] 2026-03-09 23:47:58,299 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:47:58,299: INFO/ForkPoolWorker-8] SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:47:58,300: WARNING/ForkPoolWorker-8] 2026-03-09 23:47:58,300 INFO sqlalchemy.engine.Engine [cached since 453.5s ago] ('e8595219-89f4-408c-8715-3ce24aef35b0',)
+[2026-03-09 23:47:58,300: INFO/ForkPoolWorker-8] [cached since 453.5s ago] ('e8595219-89f4-408c-8715-3ce24aef35b0',)
+[2026-03-09 23:47:58,309: WARNING/ForkPoolWorker-8] 2026-03-09 23:47:58,309 INFO sqlalchemy.engine.Engine UPDATE design_runs SET status=$1::VARCHAR, completed_at=$2::VARCHAR, error_message=$3::VARCHAR, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:47:58,309: INFO/ForkPoolWorker-8] UPDATE design_runs SET status=$1::VARCHAR, completed_at=$2::VARCHAR, error_message=$3::VARCHAR, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:47:58,310: WARNING/ForkPoolWorker-8] 2026-03-09 23:47:58,310 INFO sqlalchemy.engine.Engine [cached since 388.1s ago] ('failed', '2026-03-09T20:47:58.308848+00:00', "Task <Task pending name='Task-47' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb= ... (104 characters truncated) ... ns/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop", datetime.datetime(2026, 3, 9, 20, 47, 58, 309204, tzinfo=datetime.timezone.utc), 'e8595219-89f4-408c-8715-3ce24aef35b0')
+[2026-03-09 23:47:58,310: INFO/ForkPoolWorker-8] [cached since 388.1s ago] ('failed', '2026-03-09T20:47:58.308848+00:00', "Task <Task pending name='Task-47' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb= ... (104 characters truncated) ... ns/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop", datetime.datetime(2026, 3, 9, 20, 47, 58, 309204, tzinfo=datetime.timezone.utc), 'e8595219-89f4-408c-8715-3ce24aef35b0')
+[2026-03-09 23:47:58,313: WARNING/ForkPoolWorker-8] 2026-03-09 23:47:58,312 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:47:58,312: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:47:58,322: ERROR/ForkPoolWorker-8] Task app.tasks.orchestration.run_design_pipeline[0662c497-bfce-4766-b4f5-897933bfa381] raised unexpected: RuntimeError("Task <Task pending name='Task-47' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop")
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/trace.py", line 479, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/trace.py", line 779, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py", line 65, in run_design_pipeline
+    result = asyncio.run(_async_pipeline(run_id, self))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py", line 101, in _async_pipeline
+    run = (await db.execute(select(DesignRun).where(DesignRun.id == run_id))).scalar_one_or_none()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/session.py", line 449, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2239, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2108, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1187, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1371, in _checkout
+    with util.safe_reraise():
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1309, in _checkout
+    result = pool._dialect._do_ping_w_event(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 729, in _do_ping_w_event
+    return self.do_ping(dbapi_connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1160, in do_ping
+    dbapi_connection.ping()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 818, in ping
+    self._handle_exception(error)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 799, in _handle_exception
+    raise error
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 816, in ping
+    _ = self.await_(self._async_ping())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 825, in _async_ping
+    await tr.start()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/transaction.py", line 146, in start
+    await self._connection.execute(query)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 354, in execute
+    result = await self._protocol.query(query, timeout)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 369, in query
+RuntimeError: Task <Task pending name='Task-47' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop
+[2026-03-09 23:48:34,615: INFO/MainProcess] Task app.tasks.orchestration.run_design_pipeline[98632c9a-4678-4aa3-880f-d19e2c4903b0] received
+[2026-03-09 23:48:34,618: WARNING/ForkPoolWorker-8] 2026-03-09 23:48:34 [info     ] pipeline_task_started          run_id=01336407-c5af-40ee-bd15-e49a15e36b8f task_id=98632c9a-4678-4aa3-880f-d19e2c4903b0
+[2026-03-09 23:48:34,619: ERROR/ForkPoolWorker-8] Exception terminating connection <AdaptedConnection <asyncpg.connection.Connection object at 0x10c7164d0>>
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 373, in _close_connection
+    self._dialect.do_terminate(connection)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1127, in do_terminate
+    dbapi_connection.terminate()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/connectors/asyncio.py", line 402, in terminate
+    self.await_(asyncio.shield(self._terminate_graceful_close()))  # type: ignore[attr-defined] # noqa: E501
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 912, in _terminate_graceful_close
+    await self._connection.close(timeout=2)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 1513, in close
+    await self._protocol.close(timeout)
+  File "asyncpg/protocol/protocol.pyx", line 617, in close
+  File "asyncpg/protocol/protocol.pyx", line 650, in asyncpg.protocol.protocol.BaseProtocol._request_cancel
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 1682, in _cancel_current_command
+    self._cancellations.add(self._loop.create_task(self._cancel(waiter)))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 435, in create_task
+    self._check_closed()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+[2026-03-09 23:48:34,620: WARNING/ForkPoolWorker-8] 2026-03-09 23:48:34 [error    ] pipeline_task_failed           error="Task <Task pending name='Task-57' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop" run_id=01336407-c5af-40ee-bd15-e49a15e36b8f task_id=98632c9a-4678-4aa3-880f-d19e2c4903b0
+[2026-03-09 23:48:34,642: WARNING/ForkPoolWorker-8] 2026-03-09 23:48:34,641 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2026-03-09 23:48:34,641: INFO/ForkPoolWorker-8] BEGIN (implicit)
+[2026-03-09 23:48:34,642: WARNING/ForkPoolWorker-8] 2026-03-09 23:48:34,642 INFO sqlalchemy.engine.Engine SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:48:34,642: INFO/ForkPoolWorker-8] SELECT design_runs.status, design_runs.correlation_id, design_runs.current_step, design_runs.requirement, design_runs.design_summary, design_runs.steps, design_runs.started_at, design_runs.completed_at, design_runs.total_duration_ms, design_runs.error_message, design_runs.error_code, design_runs.id, design_runs.created_at, design_runs.updated_at 
+FROM design_runs 
+WHERE design_runs.id = $1::VARCHAR
+[2026-03-09 23:48:34,643: WARNING/ForkPoolWorker-8] 2026-03-09 23:48:34,642 INFO sqlalchemy.engine.Engine [cached since 489.9s ago] ('01336407-c5af-40ee-bd15-e49a15e36b8f',)
+[2026-03-09 23:48:34,642: INFO/ForkPoolWorker-8] [cached since 489.9s ago] ('01336407-c5af-40ee-bd15-e49a15e36b8f',)
+[2026-03-09 23:48:34,648: WARNING/ForkPoolWorker-8] 2026-03-09 23:48:34,648 INFO sqlalchemy.engine.Engine UPDATE design_runs SET status=$1::VARCHAR, completed_at=$2::VARCHAR, error_message=$3::VARCHAR, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:48:34,648: INFO/ForkPoolWorker-8] UPDATE design_runs SET status=$1::VARCHAR, completed_at=$2::VARCHAR, error_message=$3::VARCHAR, updated_at=$4::TIMESTAMP WITH TIME ZONE WHERE design_runs.id = $5::VARCHAR
+[2026-03-09 23:48:34,648: WARNING/ForkPoolWorker-8] 2026-03-09 23:48:34,648 INFO sqlalchemy.engine.Engine [cached since 424.4s ago] ('failed', '2026-03-09T20:48:34.647914+00:00', "Task <Task pending name='Task-57' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb= ... (104 characters truncated) ... ns/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop", datetime.datetime(2026, 3, 9, 20, 48, 34, 648189, tzinfo=datetime.timezone.utc), '01336407-c5af-40ee-bd15-e49a15e36b8f')
+[2026-03-09 23:48:34,648: INFO/ForkPoolWorker-8] [cached since 424.4s ago] ('failed', '2026-03-09T20:48:34.647914+00:00', "Task <Task pending name='Task-57' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb= ... (104 characters truncated) ... ns/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop", datetime.datetime(2026, 3, 9, 20, 48, 34, 648189, tzinfo=datetime.timezone.utc), '01336407-c5af-40ee-bd15-e49a15e36b8f')
+[2026-03-09 23:48:34,650: WARNING/ForkPoolWorker-8] 2026-03-09 23:48:34,650 INFO sqlalchemy.engine.Engine COMMIT
+[2026-03-09 23:48:34,650: INFO/ForkPoolWorker-8] COMMIT
+[2026-03-09 23:48:34,657: ERROR/ForkPoolWorker-8] Task app.tasks.orchestration.run_design_pipeline[98632c9a-4678-4aa3-880f-d19e2c4903b0] raised unexpected: RuntimeError("Task <Task pending name='Task-57' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop")
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/trace.py", line 479, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/trace.py", line 779, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py", line 65, in run_design_pipeline
+    result = asyncio.run(_async_pipeline(run_id, self))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py", line 101, in _async_pipeline
+    run = (await db.execute(select(DesignRun).where(DesignRun.id == run_id))).scalar_one_or_none()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/session.py", line 449, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2239, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2108, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1187, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1371, in _checkout
+    with util.safe_reraise():
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1309, in _checkout
+    result = pool._dialect._do_ping_w_event(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 729, in _do_ping_w_event
+    return self.do_ping(dbapi_connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1160, in do_ping
+    dbapi_connection.ping()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 818, in ping
+    self._handle_exception(error)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 799, in _handle_exception
+    raise error
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 816, in ping
+    _ = self.await_(self._async_ping())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 825, in _async_ping
+    await tr.start()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/transaction.py", line 146, in start
+    await self._connection.execute(query)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/asyncpg/connection.py", line 354, in execute
+    result = await self._protocol.query(query, timeout)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 369, in query
+RuntimeError: Task <Task pending name='Task-57' coro=<_async_pipeline() running at /Users/ali/Desktop/CircuitSimulation/backend/app/tasks/orchestration.py:101> cb=[_run_until_complete_cb() at /opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py:181]> got Future <Future pending cb=[BaseProtocol._on_waiter_completed()]> attached to a different loop
+
+worker: Warm shutdown (MainProcess)

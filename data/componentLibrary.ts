@@ -2,6 +2,7 @@ import type { ComponentDefinition, ComponentCategory } from "@/types/playground"
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Master component library definition
+// Port x/y values are pixel-precise positions matching SVG symbol pin locations.
 // ──────────────────────────────────────────────────────────────────────────────
 
 export const componentLibrary: ComponentDefinition[] = [
@@ -9,27 +10,35 @@ export const componentLibrary: ComponentDefinition[] = [
   {
     type: "nmos",
     label: "NMOS",
-    shortLabel: "N",
+    shortLabel: "M",
     category: "active",
     description: "N-channel MOSFET transistor",
     defaultProps: { W: 10, L: 0.5, fingers: 1, model: "NMOS_VTH" },
+    nodeWidth: 56,
+    nodeHeight: 64,
+    spicePrefix: "M",
+    netlistTemplate: "{name} {drain} {gate} {source} {bulk} {model} W={W}u L={L}u",
     ports: [
-      { id: "drain", label: "D", position: "top", offsetPercent: 50 },
-      { id: "gate", label: "G", position: "left", offsetPercent: 50 },
-      { id: "source", label: "S", position: "bottom", offsetPercent: 50 },
+      { id: "drain", label: "D", position: "top", offsetPercent: 79, x: 44, y: 0, direction: "bidirectional", electricalType: "signal" },
+      { id: "gate", label: "G", position: "left", offsetPercent: 50, x: 0, y: 32, direction: "input", electricalType: "signal" },
+      { id: "source", label: "S", position: "bottom", offsetPercent: 79, x: 44, y: 64, direction: "bidirectional", electricalType: "signal" },
     ],
   },
   {
     type: "pmos",
     label: "PMOS",
-    shortLabel: "P",
+    shortLabel: "M",
     category: "active",
     description: "P-channel MOSFET transistor",
     defaultProps: { W: 20, L: 0.5, fingers: 1, model: "PMOS_VTH" },
+    nodeWidth: 56,
+    nodeHeight: 64,
+    spicePrefix: "M",
+    netlistTemplate: "{name} {drain} {gate} {source} {bulk} {model} W={W}u L={L}u",
     ports: [
-      { id: "drain", label: "D", position: "bottom", offsetPercent: 50 },
-      { id: "gate", label: "G", position: "left", offsetPercent: 50 },
-      { id: "source", label: "S", position: "top", offsetPercent: 50 },
+      { id: "source", label: "S", position: "top", offsetPercent: 79, x: 44, y: 0, direction: "bidirectional", electricalType: "signal" },
+      { id: "gate", label: "G", position: "left", offsetPercent: 50, x: 0, y: 32, direction: "input", electricalType: "signal" },
+      { id: "drain", label: "D", position: "bottom", offsetPercent: 79, x: 44, y: 64, direction: "bidirectional", electricalType: "signal" },
     ],
   },
   {
@@ -39,10 +48,14 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "active",
     description: "NPN bipolar junction transistor",
     defaultProps: { Is: "1e-15", betaF: 100, model: "NPN_BJT" },
+    nodeWidth: 56,
+    nodeHeight: 64,
+    spicePrefix: "Q",
+    netlistTemplate: "{name} {collector} {base} {emitter} {model}",
     ports: [
-      { id: "collector", label: "C", position: "top", offsetPercent: 50 },
-      { id: "base", label: "B", position: "left", offsetPercent: 50 },
-      { id: "emitter", label: "E", position: "bottom", offsetPercent: 50 },
+      { id: "collector", label: "C", position: "top", offsetPercent: 79, x: 44, y: 0, direction: "bidirectional", electricalType: "signal" },
+      { id: "base", label: "B", position: "left", offsetPercent: 50, x: 0, y: 32, direction: "input", electricalType: "signal" },
+      { id: "emitter", label: "E", position: "bottom", offsetPercent: 79, x: 44, y: 64, direction: "bidirectional", electricalType: "signal" },
     ],
   },
   {
@@ -52,10 +65,14 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "active",
     description: "PNP bipolar junction transistor",
     defaultProps: { Is: "1e-15", betaF: 100, model: "PNP_BJT" },
+    nodeWidth: 56,
+    nodeHeight: 64,
+    spicePrefix: "Q",
+    netlistTemplate: "{name} {collector} {base} {emitter} {model}",
     ports: [
-      { id: "collector", label: "C", position: "bottom", offsetPercent: 50 },
-      { id: "base", label: "B", position: "left", offsetPercent: 50 },
-      { id: "emitter", label: "E", position: "top", offsetPercent: 50 },
+      { id: "emitter", label: "E", position: "top", offsetPercent: 79, x: 44, y: 0, direction: "bidirectional", electricalType: "signal" },
+      { id: "base", label: "B", position: "left", offsetPercent: 50, x: 0, y: 32, direction: "input", electricalType: "signal" },
+      { id: "collector", label: "C", position: "bottom", offsetPercent: 79, x: 44, y: 64, direction: "bidirectional", electricalType: "signal" },
     ],
   },
   {
@@ -65,12 +82,16 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "active",
     description: "Ideal op-amp block",
     defaultProps: { gain: "1e6", model: "IDEAL_OPAMP" },
+    nodeWidth: 72,
+    nodeHeight: 64,
+    spicePrefix: "X",
+    netlistTemplate: "{name} {vp} {vm} {out} {vdd} {vss} {model}",
     ports: [
-      { id: "vp", label: "+", position: "left", offsetPercent: 33 },
-      { id: "vm", label: "−", position: "left", offsetPercent: 67 },
-      { id: "out", label: "OUT", position: "right", offsetPercent: 50 },
-      { id: "vdd", label: "VDD", position: "top", offsetPercent: 50 },
-      { id: "vss", label: "VSS", position: "bottom", offsetPercent: 50 },
+      { id: "vp", label: "+", position: "left", offsetPercent: 31, x: 0, y: 20, direction: "input", electricalType: "signal" },
+      { id: "vm", label: "−", position: "left", offsetPercent: 69, x: 0, y: 44, direction: "input", electricalType: "signal" },
+      { id: "out", label: "OUT", position: "right", offsetPercent: 50, x: 72, y: 32, direction: "output", electricalType: "signal" },
+      { id: "vdd", label: "VDD", position: "top", offsetPercent: 53, x: 38, y: 0, direction: "input", electricalType: "power" },
+      { id: "vss", label: "VSS", position: "bottom", offsetPercent: 53, x: 38, y: 64, direction: "input", electricalType: "power" },
     ],
   },
 
@@ -82,9 +103,13 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "passive",
     description: "Resistor element",
     defaultProps: { resistance: 10, unit: "kΩ", tolerance: "5%" },
+    nodeWidth: 60,
+    nodeHeight: 24,
+    spicePrefix: "R",
+    netlistTemplate: "{name} {p} {n} {resistance}{unit}",
     ports: [
-      { id: "p", label: "P", position: "top", offsetPercent: 50 },
-      { id: "n", label: "N", position: "bottom", offsetPercent: 50 },
+      { id: "p", label: "P", position: "left", offsetPercent: 50, x: 0, y: 12, direction: "bidirectional", electricalType: "signal" },
+      { id: "n", label: "N", position: "right", offsetPercent: 50, x: 60, y: 12, direction: "bidirectional", electricalType: "signal" },
     ],
   },
   {
@@ -94,9 +119,13 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "passive",
     description: "Capacitor element",
     defaultProps: { capacitance: 1, unit: "pF" },
+    nodeWidth: 60,
+    nodeHeight: 32,
+    spicePrefix: "C",
+    netlistTemplate: "{name} {p} {n} {capacitance}{unit}",
     ports: [
-      { id: "p", label: "P", position: "top", offsetPercent: 50 },
-      { id: "n", label: "N", position: "bottom", offsetPercent: 50 },
+      { id: "p", label: "P", position: "left", offsetPercent: 50, x: 0, y: 16, direction: "bidirectional", electricalType: "signal" },
+      { id: "n", label: "N", position: "right", offsetPercent: 50, x: 60, y: 16, direction: "bidirectional", electricalType: "signal" },
     ],
   },
   {
@@ -106,9 +135,13 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "passive",
     description: "Inductor element",
     defaultProps: { inductance: 1, unit: "nH" },
+    nodeWidth: 60,
+    nodeHeight: 24,
+    spicePrefix: "L",
+    netlistTemplate: "{name} {p} {n} {inductance}{unit}",
     ports: [
-      { id: "p", label: "P", position: "top", offsetPercent: 50 },
-      { id: "n", label: "N", position: "bottom", offsetPercent: 50 },
+      { id: "p", label: "P", position: "left", offsetPercent: 50, x: 0, y: 16, direction: "bidirectional", electricalType: "signal" },
+      { id: "n", label: "N", position: "right", offsetPercent: 50, x: 60, y: 16, direction: "bidirectional", electricalType: "signal" },
     ],
   },
   {
@@ -118,9 +151,13 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "passive",
     description: "Semiconductor diode",
     defaultProps: { Is: "1e-14", model: "D_1N4148" },
+    nodeWidth: 60,
+    nodeHeight: 32,
+    spicePrefix: "D",
+    netlistTemplate: "{name} {anode} {cathode} {model}",
     ports: [
-      { id: "anode", label: "A", position: "top", offsetPercent: 50 },
-      { id: "cathode", label: "K", position: "bottom", offsetPercent: 50 },
+      { id: "anode", label: "A", position: "left", offsetPercent: 50, x: 0, y: 16, direction: "bidirectional", electricalType: "signal" },
+      { id: "cathode", label: "K", position: "right", offsetPercent: 50, x: 60, y: 16, direction: "bidirectional", electricalType: "signal" },
     ],
   },
 
@@ -132,9 +169,13 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "sources",
     description: "Independent voltage source",
     defaultProps: { voltage: 1.8, acAmplitude: 1, type: "DC" },
+    nodeWidth: 48,
+    nodeHeight: 48,
+    spicePrefix: "V",
+    netlistTemplate: "{name} {pos} {neg} DC {voltage}",
     ports: [
-      { id: "pos", label: "+", position: "top", offsetPercent: 50 },
-      { id: "neg", label: "−", position: "bottom", offsetPercent: 50 },
+      { id: "pos", label: "+", position: "top", offsetPercent: 50, x: 24, y: 0, direction: "output", electricalType: "signal" },
+      { id: "neg", label: "−", position: "bottom", offsetPercent: 50, x: 24, y: 48, direction: "output", electricalType: "signal" },
     ],
   },
   {
@@ -144,9 +185,13 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "sources",
     description: "Independent current source",
     defaultProps: { current: 100, unit: "µA", type: "DC" },
+    nodeWidth: 48,
+    nodeHeight: 48,
+    spicePrefix: "I",
+    netlistTemplate: "{name} {pos} {neg} DC {current}{unit}",
     ports: [
-      { id: "pos", label: "+", position: "top", offsetPercent: 50 },
-      { id: "neg", label: "−", position: "bottom", offsetPercent: 50 },
+      { id: "pos", label: "+", position: "top", offsetPercent: 50, x: 24, y: 0, direction: "output", electricalType: "signal" },
+      { id: "neg", label: "−", position: "bottom", offsetPercent: 50, x: 24, y: 48, direction: "output", electricalType: "signal" },
     ],
   },
 
@@ -158,8 +203,11 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "nodes",
     description: "Reference ground node (0V)",
     defaultProps: {},
+    nodeWidth: 32,
+    nodeHeight: 28,
+    spicePrefix: "",
     ports: [
-      { id: "gnd", label: "GND", position: "top", offsetPercent: 50 },
+      { id: "gnd", label: "GND", position: "top", offsetPercent: 50, x: 16, y: 0, direction: "bidirectional", electricalType: "ground" },
     ],
   },
   {
@@ -169,8 +217,11 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "nodes",
     description: "Power supply rail node",
     defaultProps: { voltage: 1.8 },
+    nodeWidth: 32,
+    nodeHeight: 28,
+    spicePrefix: "",
     ports: [
-      { id: "vdd", label: "VDD", position: "bottom", offsetPercent: 50 },
+      { id: "vdd", label: "VDD", position: "bottom", offsetPercent: 50, x: 16, y: 28, direction: "bidirectional", electricalType: "power" },
     ],
   },
   {
@@ -180,8 +231,11 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "nodes",
     description: "Circuit input terminal",
     defaultProps: { name: "VIN" },
+    nodeWidth: 40,
+    nodeHeight: 24,
+    spicePrefix: "",
     ports: [
-      { id: "out", label: "→", position: "right", offsetPercent: 50 },
+      { id: "out", label: "→", position: "right", offsetPercent: 50, x: 40, y: 12, direction: "output", electricalType: "signal" },
     ],
   },
   {
@@ -191,8 +245,11 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "nodes",
     description: "Circuit output terminal",
     defaultProps: { name: "VOUT" },
+    nodeWidth: 40,
+    nodeHeight: 24,
+    spicePrefix: "",
     ports: [
-      { id: "inp", label: "←", position: "left", offsetPercent: 50 },
+      { id: "inp", label: "←", position: "left", offsetPercent: 50, x: 0, y: 12, direction: "input", electricalType: "signal" },
     ],
   },
   {
@@ -202,9 +259,25 @@ export const componentLibrary: ComponentDefinition[] = [
     category: "nodes",
     description: "Measurement / test point",
     defaultProps: { name: "TP1" },
+    nodeWidth: 32,
+    nodeHeight: 32,
+    spicePrefix: "",
     ports: [
-      { id: "probe", label: "↓", position: "top", offsetPercent: 50 },
+      { id: "probe", label: "↓", position: "top", offsetPercent: 50, x: 16, y: 0, direction: "input", electricalType: "signal" },
     ],
+  },
+  // ── TOOLS ──────────────────────────────────────────────────────────────────
+  {
+    type: "scope",
+    label: "Oscilloscope",
+    shortLabel: "SC",
+    category: "tools",
+    description: "Click a wire to measure V/I",
+    defaultProps: { name: "SCOPE" },
+    nodeWidth: 36,
+    nodeHeight: 36,
+    spicePrefix: "",
+    ports: [],
   },
 ];
 
@@ -213,6 +286,7 @@ export const componentCategories: { id: ComponentCategory; label: string; color:
   { id: "passive", label: "Passive", color: "text-violet-400" },
   { id: "sources", label: "Sources", color: "text-emerald-400" },
   { id: "nodes", label: "Nodes", color: "text-amber-400" },
+  { id: "tools", label: "Tools", color: "text-emerald-300" },
 ];
 
 export function getComponentDef(type: string): ComponentDefinition | undefined {

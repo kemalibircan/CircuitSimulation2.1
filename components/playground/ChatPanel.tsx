@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Send, Cpu, LayoutTemplate, RotateCcw, BoxSelect } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import type { ChatMessage } from "@/types/playground";
 import { cn } from "@/lib/utils";
 
@@ -97,12 +98,13 @@ export function ChatPanel({
               </div>
             )}
             
-            <span className={cn(
-              msg.role === "system" && "whitespace-pre-line font-mono text-[11px]",
-              msg.role === "agent" && "leading-relaxed"
+            <div className={cn(
+              "prose prose-sm prose-invert max-w-none leading-relaxed",
+              msg.role === "system" && "font-mono text-[11px] prose-p:my-0.5",
+              msg.role === "user" && "text-zinc-950 marker:text-zinc-950"
             )}>
-              {msg.content}
-            </span>
+              <ReactMarkdown>{msg.content}</ReactMarkdown>
+            </div>
             
             {/* Timestamp */}
             {msg.role !== "system" && (

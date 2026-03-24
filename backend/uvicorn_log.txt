@@ -1,0 +1,290 @@
+INFO:     Started server process [588]
+INFO:     Waiting for application startup.
+[2m2026-03-09T20:11:23.752451Z[0m [[32m[1minfo     [0m] [1mcircuitai_api_starting        [0m [[0m[1m[34mapp.main[0m][0m [36menv[0m=[35mdevelopment[0m
+2026-03-09 23:11:25,155 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+[2m2026-03-09T20:11:25.155265Z[0m [[32m[1minfo     [0m] [1mselect pg_catalog.version()   [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:11:25,155 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:11:25.155371Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:11:25,158 INFO sqlalchemy.engine.Engine select current_schema()
+[2m2026-03-09T20:11:25.158412Z[0m [[32m[1minfo     [0m] [1mselect current_schema()       [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:11:25,158 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:11:25.158472Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:11:25,162 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+[2m2026-03-09T20:11:25.163092Z[0m [[32m[1minfo     [0m] [1mshow standard_conforming_strings[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:11:25,163 INFO sqlalchemy.engine.Engine [raw sql] ()
+[2m2026-03-09T20:11:25.163190Z[0m [[32m[1minfo     [0m] [1m[raw sql] ()                  [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:11:25,164 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[2m2026-03-09T20:11:25.164612Z[0m [[32m[1minfo     [0m] [1mBEGIN (implicit)              [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:11:25,166 INFO sqlalchemy.engine.Engine INSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)
+[2m2026-03-09T20:11:25.166717Z[0m [[32m[1minfo     [0m] [1mINSERT INTO design_runs (status, correlation_id, current_step, requirement, steps, started_at, completed_at, total_duration_ms, error_message, error_code, id, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::JSON, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::INTEGER, $9::VARCHAR, $10::VARCHAR, $11::VARCHAR, $12::TIMESTAMP WITH TIME ZONE, $13::TIMESTAMP WITH TIME ZONE)[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:11:25,166 INFO sqlalchemy.engine.Engine [generated in 0.00022s] ('queued', '43e66277-7a8e-4f55-a229-b997bd4d8c92', None, '{"id": "77c38e3c-5e14-4eda-8e79-4fb30a0c2f0a", "naturalLanguagePrompt": "Design a simple op-amp", "category": "op-amp", "supplyVoltage": 1.8, "technology": "TSMC 180nm", "temperature": 27.0, "createdAt": "2026-03-09T20:11:25.116286+00:00", "constraints": []}', '[]', None, None, None, None, None, '0ee05c46-8f61-463b-8fa1-d203fdb06ae4', datetime.datetime(2026, 3, 9, 20, 11, 25, 166594, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 11, 25, 166597, tzinfo=datetime.timezone.utc))
+[2m2026-03-09T20:11:25.166809Z[0m [[32m[1minfo     [0m] [1m[generated in 0.00022s] ('queued', '43e66277-7a8e-4f55-a229-b997bd4d8c92', None, '{"id": "77c38e3c-5e14-4eda-8e79-4fb30a0c2f0a", "naturalLanguagePrompt": "Design a simple op-amp", "category": "op-amp", "supplyVoltage": 1.8, "technology": "TSMC 180nm", "temperature": 27.0, "createdAt": "2026-03-09T20:11:25.116286+00:00", "constraints": []}', '[]', None, None, None, None, None, '0ee05c46-8f61-463b-8fa1-d203fdb06ae4', datetime.datetime(2026, 3, 9, 20, 11, 25, 166594, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 3, 9, 20, 11, 25, 166597, tzinfo=datetime.timezone.utc))[0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+2026-03-09 23:11:25,169 INFO sqlalchemy.engine.Engine COMMIT
+[2m2026-03-09T20:11:25.169297Z[0m [[32m[1minfo     [0m] [1mCOMMIT                        [0m [[0m[1m[34msqlalchemy.engine.Engine[0m][0m
+[2m2026-03-09T20:11:25.229234Z[0m [[32m[1mdebug    [0m] [1m
+def backend_cleanup():
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:11:25.230700Z[0m [[32m[1mdebug    [0m] [1m
+def chain(*args, **kwargs):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:11:25.230818Z[0m [[32m[1mdebug    [0m] [1m
+def xstarmap(task, it):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:11:25.230919Z[0m [[32m[1mdebug    [0m] [1m
+def accumulate(self, *args, **kwargs):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:11:25.231011Z[0m [[32m[1mdebug    [0m] [1m
+def run_design_pipeline(self, run_id):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:11:25.231124Z[0m [[32m[1mdebug    [0m] [1m
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:11:25.231236Z[0m [[32m[1mdebug    [0m] [1m
+def chunks(task, it, n):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:11:25.232983Z[0m [[32m[1mdebug    [0m] [1m
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:11:25.233119Z[0m [[32m[1mdebug    [0m] [1m
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:11:25.233218Z[0m [[32m[1mdebug    [0m] [1m
+def xmap(task, it):
+    return 1
+[0m [[0m[1m[34mcelery.utils.functional[0m][0m
+[2m2026-03-09T20:11:25.236924Z[0m [[33m[1mwarning  [0m] [1mNo hostname was supplied. Reverting to default 'localhost'[0m [[0m[1m[34mkombu.connection[0m][0m
+[2m2026-03-09T20:11:25.850071Z[0m [[31m[1merror    [0m] [1munhandled_exception           [0m [[0m[1m[34merrors[0m][0m
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+           ^^^^^^^^^^^^^^
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 87, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 130, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 116, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 324, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/api/v1/runs.py", line 98, in create_run
+    run_design_pipeline.apply_async(args=[run_id], task_id=str(uuid.uuid4()))
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/task.py", line 608, in apply_async
+    return app.send_task(
+           ^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/base.py", line 947, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/amqp.py", line 559, in send_task_message
+    ret = producer.publish(
+          ^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+           ^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+              ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+                              ^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+                             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 61] Connection refused
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+           ^^^^^^^^^^^^^^
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/applications.py", line 1160, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 87, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 130, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 116, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 324, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/app/api/v1/runs.py", line 98, in create_run
+    run_design_pipeline.apply_async(args=[run_id], task_id=str(uuid.uuid4()))
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/task.py", line 608, in apply_async
+    return app.send_task(
+           ^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/base.py", line 947, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/celery/app/amqp.py", line 559, in send_task_message
+    ret = producer.publish(
+          ^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+           ^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+              ^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+                              ^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+                             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/ali/Desktop/CircuitSimulation/backend/.venv/lib/python3.11/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 61] Connection refused

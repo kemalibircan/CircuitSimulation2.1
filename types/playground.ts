@@ -21,13 +21,15 @@ export type CircuitComponentType =
   | "input_node"
   | "output_node"
   | "probe"
+  | "scope"
   | "subcircuit";
 
 export type ComponentCategory =
   | "active"
   | "passive"
   | "sources"
-  | "nodes";
+  | "nodes"
+  | "tools";
 
 // ─── Property Schemas ────────────────────────────────────────────────────────
 
@@ -63,6 +65,15 @@ export interface CircuitEdgeData {
   label?: string;              // net name e.g. "VDD", "net_3"
   netName?: string;
   animated?: boolean;
+  /** Scope measurement data — populated after simulation */
+  scopeData?: {
+    voltage?: string;          // e.g. "1.23V"
+    current?: string;          // e.g. "50µA"
+    power?: string;            // e.g. "61.5µW"
+    nodeName?: string;         // SPICE node name
+  };
+  /** Whether this edge is currently being probed by scope */
+  isProbed?: boolean;
 }
 
 // ─── Canvas State ────────────────────────────────────────────────────────────
@@ -87,6 +98,9 @@ export interface CircuitSelectionState {
 
 // ─── Component Library ───────────────────────────────────────────────────────
 
+export type PortDirection = "input" | "output" | "bidirectional" | "power";
+export type ElectricalType = "signal" | "power" | "ground";
+
 export interface ComponentDefinition {
   type: CircuitComponentType;
   label: string;
@@ -94,9 +108,14 @@ export interface ComponentDefinition {
   category: ComponentCategory;
   description: string;
   defaultProps: Record<string, string | number>;
-  /** SVG path or symbol key */
-  symbol?: string;
   ports: PortDefinition[];
+  /** Pixel dimensions for the SVG node */
+  nodeWidth: number;
+  nodeHeight: number;
+  /** SPICE netlist prefix letter (e.g. M for MOSFET, R for resistor) */
+  spicePrefix: string;
+  /** Template for netlist line generation */
+  netlistTemplate?: string;
 }
 
 export interface PortDefinition {
@@ -104,6 +123,14 @@ export interface PortDefinition {
   label: string;
   position: "top" | "bottom" | "left" | "right";
   offsetPercent?: number; // along the edge, 0-100
+  /** Pixel-precise X offset relative to node origin */
+  x: number;
+  /** Pixel-precise Y offset relative to node origin */
+  y: number;
+  /** Signal direction for connection validation */
+  direction: PortDirection;
+  /** Electrical type for simulation mapping */
+  electricalType: ElectricalType;
 }
 
 // ─── Chat ─────────────────────────────────────────────────────────────────────
@@ -130,6 +157,7 @@ export type AgentActionType =
   | "warning"
   | "suggestion"
   | "simulation_triggered"
+  | "canvas_update"
   | "info";
 
 export interface AgentAction {

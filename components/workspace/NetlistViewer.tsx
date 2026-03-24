@@ -7,6 +7,7 @@ import type { NetlistOutput } from "@/types/circuit";
 
 interface NetlistViewerProps {
   netlist: NetlistOutput;
+  onChange?: (newRaw: string) => void;
 }
 
 // Very lightweight syntax highlighter for SPICE — no external deps
@@ -47,9 +48,11 @@ function highlightSpice(line: string): React.ReactNode {
   return <span className="spice-value">{line}</span>;
 }
 
-export function NetlistViewer({ netlist }: NetlistViewerProps) {
+export function NetlistViewer({ netlist, onChange }: NetlistViewerProps) {
   const [collapsed, setCollapsed] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [draft, setDraft] = useState(netlist.raw);
 
   const lines = netlist.raw.split("\n");
 
@@ -73,6 +76,11 @@ export function NetlistViewer({ netlist }: NetlistViewerProps) {
     URL.revokeObjectURL(url);
   }
 
+  function handleSave() {
+    setIsEditing(false);
+    onChange?.(draft);
+  }
+
   return (
     <div className="rounded-xl border border-zinc-800 overflow-hidden">
       {/* Toolbar */}
@@ -91,6 +99,30 @@ export function NetlistViewer({ netlist }: NetlistViewerProps) {
           </span>
         </div>
         <div className="flex items-center gap-1.5">
+          {isEditing ? (
+            <>
+               <button
+                onClick={() => { setIsEditing(false); setDraft(netlist.raw); }}
+                className="px-2.5 py-1 rounded-md text-xs text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-all"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSave}
+                className="px-2.5 py-1 rounded-md text-xs text-emerald-400 hover:text-emerald-300 hover:bg-emerald-900/30 transition-all font-medium"
+              >
+                Save Changes
+              </button>
+            </>
+          ) : (
+             <button
+              onClick={() => { setIsEditing(true); setDraft(netlist.raw); }}
+              className="px-2.5 py-1 rounded-md text-xs text-cyan-500 hover:text-cyan-400 hover:bg-zinc-800 transition-all"
+            >
+              Edit Netlist
+            </button>
+          )}
+          <div className="w-px h-4 bg-zinc-800 mx-1" />
           <button
             onClick={handleCopy}
             className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800 transition-all"
@@ -125,6 +157,14 @@ export function NetlistViewer({ netlist }: NetlistViewerProps) {
       {/* Code body */}
       {!collapsed && (
         <div className="overflow-auto max-h-80 bg-zinc-950">
+          {isEditing ? (
+             <textarea
+               value={draft}
+               onChange={(e) => setDraft(e.target.value)}
+               className="w-full min-h-[300px] bg-zinc-950 text-zinc-300 font-mono text-xs p-4 focus:outline-none resize-none"
+               spellCheck={false}
+             />
+          ) : (
           <table className="w-full text-xs font-mono">
             <tbody>
               {lines.map((line, i) => (
@@ -139,6 +179,7 @@ export function NetlistViewer({ netlist }: NetlistViewerProps) {
               ))}
             </tbody>
           </table>
+          )}
         </div>
       )}
     </div>

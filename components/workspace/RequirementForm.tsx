@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Send, Plus, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { CircuitCategory, DesignConstraint } from "@/types/circuit";
+import { ModelSelector } from "@/components/workspace/ModelPricingCard";
+import { getDefaultModel, estimateCost, formatPrice } from "@/lib/modelConfig";
 
 const categories: { value: CircuitCategory; label: string }[] = [
   { value: "op-amp", label: "Operational Amplifier" },
@@ -37,22 +39,31 @@ interface MetricEntry {
 }
 
 interface RequirementFormProps {
-  onSubmit: (prompt: string, category: CircuitCategory, metrics: MetricEntry[]) => void;
+  onSubmit: (prompt: string, category: CircuitCategory, metrics: MetricEntry[], modelId?: string) => void;
   isRunning: boolean;
+  initialPrompt?: string;
+  initialCategory?: CircuitCategory;
 }
 
-export function RequirementForm({ onSubmit, isRunning }: RequirementFormProps) {
-  const [prompt, setPrompt] = useState(
-    "Design a two-stage CMOS operational amplifier in TSMC 180nm with at least 60 dB open-loop gain and 10 MHz unity-gain bandwidth. Phase margin should exceed 60° for stability. Keep power consumption below 1 mW with a 1.8V supply."
+export function RequirementForm({ onSubmit, isRunning, initialPrompt = "", initialCategory = "op-amp" }: RequirementFormProps) {
+  const [prompt, setPrompt] = useState(initialPrompt);
+  const [category, setCategory] = useState<CircuitCategory>(initialCategory);
+  const [metrics, setMetrics] = useState<MetricEntry[]>(
+    initialCategory === "blank" ? [] : [
+      { key: "gain", label: "DC Gain", unit: "dB", value: "60", priority: "hard" },
+      { key: "bw", label: "GBW", unit: "MHz", value: "10", priority: "hard" },
+      { key: "pm", label: "Phase Margin", unit: "°", value: "60", priority: "hard" },
+      { key: "power", label: "Power", unit: "mW", value: "1.0", priority: "soft" },
+    ]
   );
-  const [category, setCategory] = useState<CircuitCategory>("op-amp");
-  const [metrics, setMetrics] = useState<MetricEntry[]>([
-    { key: "gain", label: "DC Gain", unit: "dB", value: "60", priority: "hard" },
-    { key: "bw", label: "GBW", unit: "MHz", value: "10", priority: "hard" },
-    { key: "pm", label: "Phase Margin", unit: "°", value: "60", priority: "hard" },
-    { key: "power", label: "Power", unit: "mW", value: "1.0", priority: "soft" },
-  ]);
   const [showMetricPicker, setShowMetricPicker] = useState(false);
+  const [selectedModel, setSelectedModel] = useState(getDefaultModel().id);
+
+  // Sync with parent-provided initial values (e.g., after run starts)
+  useEffect(() => { if (initialPrompt) setPrompt(initialPrompt); }, [initialPrompt]);
+  useEffect(() => { if (initialCategory) setCategory(initialCategory); }, [initialCategory]);
+
+  const costEstimate = estimateCost(prompt, selectedModel);
 
   function addMetric(opt: (typeof metricOptions)[0]) {
     if (metrics.find((m) => m.key === opt.key)) return;
@@ -76,7 +87,7 @@ export function RequirementForm({ onSubmit, isRunning }: RequirementFormProps) {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!prompt.trim()) return;
-    onSubmit(prompt, category, metrics);
+    onSubmit(prompt, category, metrics, selectedModel);
   }
 
   return (
@@ -101,44 +112,8 @@ export function RequirementForm({ onSubmit, isRunning }: RequirementFormProps) {
         </div>
       </div>
 
-      {/* Circuit Category + Technology */}
-      <div className="grid grid-cols-2 gap-3">
-        <div className="space-y-1.5">
-          <label className="text-xs font-medium text-zinc-500 uppercase tracking-widest">
-            Category
-          </label>
-          <div className="relative">
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value as CircuitCategory)}
-              className="w-full appearance-none bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-300 focus:outline-none focus:border-cyan-500/50 cursor-pointer pr-8"
-              disabled={isRunning}
-            >
-              {categories.map((c) => (
-                <option key={c.value} value={c.value}>
-                  {c.label}
-                </option>
-              ))}
-            </select>
-            <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-600 pointer-events-none" />
-          </div>
-        </div>
-        <div className="space-y-1.5">
-          <label className="text-xs font-medium text-zinc-500 uppercase tracking-widest">
-            Process Technology
-          </label>
-          <select
-            className="w-full appearance-none bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-300 focus:outline-none focus:border-cyan-500/50 cursor-pointer"
-            disabled={isRunning}
-            defaultValue="tsmc180"
-          >
-            <option value="tsmc180">TSMC 180nm</option>
-            <option value="tsmc65">TSMC 65nm</option>
-            <option value="tsmc28">TSMC 28nm</option>
-            <option value="gf22">GlobalFoundries 22nm</option>
-          </select>
-        </div>
-      </div>
+      {/* Hidden legacy fields - Category and Process Technology are removed from UI per user request */}
+      <input type="hidden" name="category" value={category} />
 
       {/* Target Metrics */}
       <div className="space-y-2">
@@ -223,6 +198,22 @@ export function RequirementForm({ onSubmit, isRunning }: RequirementFormProps) {
           ))}
         </div>
       </div>
+
+      {/* Model Selection */}
+      <ModelSelector
+        selectedModelId={selectedModel}
+        onSelectModel={setSelectedModel}
+        disabled={isRunning}
+      />
+
+      {/* Estimated Cost */}
+      {prompt.trim() && (
+        <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-zinc-900/60 border border-zinc-800/60">
+          <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-semibold">Est. Cost</span>
+          <span className="text-xs font-mono text-zinc-300">{formatPrice(costEstimate.totalCost)}</span>
+          <span className="text-[9px] text-zinc-600">({costEstimate.inputTokens.toLocaleString()} in / {costEstimate.outputTokens.toLocaleString()} out tokens)</span>
+        </div>
+      )}
 
       {/* Submit */}
       <button

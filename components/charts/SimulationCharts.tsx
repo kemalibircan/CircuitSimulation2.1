@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ResponsiveContainer,
   LineChart,
   Line,
   XAxis,
@@ -9,127 +8,130 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
   BarChart,
   Bar,
-  ReferenceLine,
+  Cell,
 } from "recharts";
-import { formatFrequency } from "@/lib/utils";
-import type {
-  ChartDataPoint,
-  MonteCarloDataPoint,
-} from "@/types/circuit";
+import type { WaveformData, ChartDataPoint } from "@/types/circuit";
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Custom tooltip
-// ──────────────────────────────────────────────────────────────────────────────
+// ── Color palette for multi-signal charts ──────────────────────────────────
 
-function CustomTooltip({
-  active,
-  payload,
-  label,
-  xFormatter,
-  yUnit,
-}: {
-  active?: boolean;
-  payload?: { name: string; value: number; color: string }[];
-  label?: number;
-  xFormatter?: (v: number) => string;
-  yUnit?: string;
-}) {
-  if (!active || !payload?.length) return null;
-  return (
-    <div className="rounded-lg bg-zinc-900 border border-zinc-700 px-3 py-2 shadow-xl text-xs font-mono">
-      <div className="text-zinc-400 mb-1">{xFormatter ? xFormatter(label ?? 0) : label}</div>
-      {payload.map((p) => (
-        <div key={p.name} style={{ color: p.color }}>
-          {p.name}: {p.value.toFixed(2)} {yUnit ?? ""}
-        </div>
-      ))}
-    </div>
-  );
+const SIGNAL_COLORS = [
+  "#22d3ee", // cyan-400
+  "#a78bfa", // violet-400
+  "#34d399", // emerald-400
+  "#f97316", // orange-500
+  "#f472b6", // pink-400
+  "#facc15", // yellow-400
+  "#60a5fa", // blue-400
+  "#fb923c", // orange-400
+];
+
+// ── Axis formatting helpers ────────────────────────────────────────────────
+
+function formatFrequency(value: number): string {
+  if (value >= 1e9) return `${(value / 1e9).toFixed(1)}G`;
+  if (value >= 1e6) return `${(value / 1e6).toFixed(1)}M`;
+  if (value >= 1e3) return `${(value / 1e3).toFixed(1)}k`;
+  return value.toFixed(1);
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
-// AC Response (Gain + Phase, tabbed via prop)
-// ──────────────────────────────────────────────────────────────────────────────
-
-interface ACResponseChartProps {
-  acData: ChartDataPoint[];
-  phaseData: ChartDataPoint[];
+function formatTime(value: number): string {
+  if (value >= 1) return `${value.toFixed(2)}s`;
+  if (value >= 1e-3) return `${(value * 1e3).toFixed(1)}ms`;
+  if (value >= 1e-6) return `${(value * 1e6).toFixed(1)}µs`;
+  if (value >= 1e-9) return `${(value * 1e9).toFixed(1)}ns`;
+  return value.toExponential(1);
 }
 
-export function ACResponseChart({ acData, phaseData }: ACResponseChartProps) {
-  // Downsample for performance: 1 in 3 points
-  const sampled = acData.filter((_, i) => i % 3 === 0);
-  const sampledPhase = phaseData.filter((_, i) => i % 3 === 0);
+function formatGeneric(value: number): string {
+  if (Math.abs(value) >= 1e6) return `${(value / 1e6).toFixed(1)}M`;
+  if (Math.abs(value) >= 1e3) return `${(value / 1e3).toFixed(1)}k`;
+  if (Math.abs(value) < 0.01 && value !== 0) return value.toExponential(1);
+  return value.toFixed(2);
+}
 
-  // Merge
-  const merged = sampled.map((d, i) => ({
-    freq: d.x,
-    gain: parseFloat(d.y.toFixed(2)),
-    phase: parseFloat((sampledPhase[i]?.y ?? 0).toFixed(1)),
-  }));
+function getXFormatter(chartType: string): (v: number) => string {
+  if (chartType === "bode_magnitude" || chartType === "bode_phase") return formatFrequency;
+  if (chartType === "time_domain") return formatTime;
+  return formatGeneric;
+}
+
+// ── Dynamic Waveform Chart — renders any WaveformData ──────────────────────
+
+interface DynamicWaveformChartProps {
+  waveform: WaveformData;
+  height?: number;
+}
+
+export function DynamicWaveformChart({ waveform, height = 280 }: DynamicWaveformChartProps) {
+  const { chartType, data, title, xLabel, xUnit, yLabel, yUnit, signals } = waveform;
+
+  if (!data || data.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-40 text-xs text-zinc-600 border border-dashed border-zinc-800 rounded-xl">
+        No data available for {title}
+      </div>
+    );
+  }
+
+  if (chartType === "bar") {
+    return <BarMetricChart data={data} title={title} yLabel={yLabel} yUnit={yUnit} height={height} />;
+  }
+
+  const xFormatter = getXFormatter(chartType);
+  const isLogX = chartType === "bode_magnitude" || chartType === "bode_phase";
 
   return (
-    <div className="space-y-1">
-      <label className="text-[10px] text-zinc-600 font-mono uppercase tracking-widest">AC Response (Bode)</label>
-      <ResponsiveContainer width="100%" height={200}>
-        <LineChart data={merged} margin={{ top: 8, right: 12, left: -12, bottom: 0 }}>
+    <div className="w-full">
+      <ResponsiveContainer width="100%" height={height}>
+        <LineChart data={data} margin={{ top: 8, right: 24, left: 12, bottom: 4 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
           <XAxis
-            dataKey="freq"
-            scale="log"
-            domain={["auto", "auto"]}
+            dataKey="x"
             type="number"
-            tickFormatter={(v: number) => formatFrequency(v)}
-            tick={{ fill: "#52525b", fontSize: 10, fontFamily: "monospace" }}
-            axisLine={{ stroke: "#3f3f46" }}
-            tickLine={false}
+            scale={isLogX ? "log" : "linear"}
+            domain={isLogX ? ["dataMin", "dataMax"] : ["auto", "auto"]}
+            tickFormatter={xFormatter}
+            stroke="#52525b"
+            tick={{ fill: "#71717a", fontSize: 10 }}
+            label={{ value: `${xLabel} (${xUnit})`, position: "insideBottom", offset: -2, fill: "#71717a", fontSize: 10 }}
           />
           <YAxis
-            yAxisId="gain"
-            tick={{ fill: "#52525b", fontSize: 10, fontFamily: "monospace" }}
-            axisLine={false}
-            tickLine={false}
-            unit=" dB"
-          />
-          <YAxis
-            yAxisId="phase"
-            orientation="right"
-            tick={{ fill: "#52525b", fontSize: 10, fontFamily: "monospace" }}
-            axisLine={false}
-            tickLine={false}
-            unit="°"
+            stroke="#52525b"
+            tick={{ fill: "#71717a", fontSize: 10 }}
+            tickFormatter={(v: number) => {
+              const abs = Math.abs(v);
+              if (abs === 0) return "0";
+              if (abs >= 1) return v.toFixed(2);
+              if (abs >= 1e-3) return `${(v * 1e3).toFixed(1)}m`;
+              if (abs >= 1e-6) return `${(v * 1e6).toFixed(1)}µ`;
+              if (abs >= 1e-9) return `${(v * 1e9).toFixed(1)}n`;
+              return v.toExponential(1);
+            }}
+            label={{ value: `${yLabel} (${yUnit})`, angle: -90, position: "insideLeft", fill: "#71717a", fontSize: 10 }}
           />
           <Tooltip
-            content={
-              <CustomTooltip
-                xFormatter={formatFrequency}
-              />
-            }
+            contentStyle={{ backgroundColor: "#18181b", border: "1px solid #3f3f46", borderRadius: "12px", fontSize: "11px" }}
+            labelStyle={{ color: "#a1a1aa" }}
+            labelFormatter={(v) => `${xLabel}: ${xFormatter(Number(v))}`}
+            formatter={(value: number) => [`${value.toFixed(3)} ${yUnit}`, yLabel]}
           />
-          <Legend
-            wrapperStyle={{ fontSize: "10px", color: "#71717a" }}
-          />
-          <ReferenceLine yAxisId="gain" y={0} stroke="#3f3f46" strokeDasharray="4 4" />
+          {signals.length > 1 && (
+            <Legend
+              wrapperStyle={{ fontSize: "10px", color: "#a1a1aa" }}
+              iconType="line"
+            />
+          )}
           <Line
-            yAxisId="gain"
             type="monotone"
-            dataKey="gain"
-            stroke="#22d3ee"
-            strokeWidth={1.5}
+            dataKey="y"
+            stroke={SIGNAL_COLORS[0]}
+            strokeWidth={2}
             dot={false}
-            name="Gain (dB)"
-          />
-          <Line
-            yAxisId="phase"
-            type="monotone"
-            dataKey="phase"
-            stroke="#a78bfa"
-            strokeWidth={1.5}
-            dot={false}
-            name="Phase (°)"
-            strokeDasharray="4 2"
+            name={signals[0] || yLabel}
+            activeDot={{ r: 3, fill: SIGNAL_COLORS[0] }}
           />
         </LineChart>
       </ResponsiveContainer>
@@ -137,106 +139,112 @@ export function ACResponseChart({ acData, phaseData }: ACResponseChartProps) {
   );
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Transient Response
-// ──────────────────────────────────────────────────────────────────────────────
+// ── Bar chart for discrete metrics ─────────────────────────────────────────
 
-export function TransientChart({ data }: { data: ChartDataPoint[] }) {
-  const mapped = data.map((d) => ({
-    t: d.x,
-    vout: parseFloat(d.y.toFixed(4)),
-  }));
+interface BarMetricChartProps {
+  data: ChartDataPoint[];
+  title: string;
+  yLabel: string;
+  yUnit: string;
+  height?: number;
+}
 
+function BarMetricChart({ data, yLabel, yUnit, height = 200 }: BarMetricChartProps) {
   return (
-    <div className="space-y-1">
-      <label className="text-[10px] text-zinc-600 font-mono uppercase tracking-widest">Transient Response</label>
-      <ResponsiveContainer width="100%" height={160}>
-        <LineChart data={mapped} margin={{ top: 8, right: 12, left: -12, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
-          <XAxis
-            dataKey="t"
-            tickFormatter={(v: number) => `${v}ns`}
-            tick={{ fill: "#52525b", fontSize: 10, fontFamily: "monospace" }}
-            axisLine={{ stroke: "#3f3f46" }}
-            tickLine={false}
-          />
-          <YAxis
-            tick={{ fill: "#52525b", fontSize: 10, fontFamily: "monospace" }}
-            axisLine={false}
-            tickLine={false}
-            unit="V"
-          />
-          <Tooltip
-            content={
-              <CustomTooltip yUnit="V" />
-            }
-          />
-          <Line
-            type="monotone"
-            dataKey="vout"
-            stroke="#34d399"
-            strokeWidth={1.5}
-            dot={false}
-            name="V_out (V)"
-          />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+    <ResponsiveContainer width="100%" height={height}>
+      <BarChart data={data} margin={{ top: 8, right: 24, left: 12, bottom: 4 }}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#27272a" vertical={false} />
+        <XAxis dataKey="label" stroke="#52525b" tick={{ fill: "#71717a", fontSize: 10 }} />
+        <YAxis
+          stroke="#52525b"
+          tick={{ fill: "#71717a", fontSize: 10 }}
+          label={{ value: `${yLabel} (${yUnit})`, angle: -90, position: "insideLeft", fill: "#71717a", fontSize: 10 }}
+        />
+        <Tooltip
+          contentStyle={{ backgroundColor: "#18181b", border: "1px solid #3f3f46", borderRadius: "12px", fontSize: "11px" }}
+          labelStyle={{ color: "#a1a1aa" }}
+        />
+        <Bar dataKey="y" radius={[4, 4, 0, 0]}>
+          {data.map((_, i) => (
+            <Cell key={i} fill={SIGNAL_COLORS[i % SIGNAL_COLORS.length]} />
+          ))}
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
   );
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Monte Carlo Distribution
-// ──────────────────────────────────────────────────────────────────────────────
+// ── Legacy charts (kept for backwards compatibility) ───────────────────────
+
+interface LegacyChartProps {
+  data: ChartDataPoint[];
+  height?: number;
+}
+
+export function ACResponseChart({ data, height = 260 }: LegacyChartProps) {
+  return (
+    <DynamicWaveformChart
+      waveform={{
+        id: "legacy-ac",
+        title: "AC Response",
+        chartType: "bode_magnitude",
+        xLabel: "Frequency",
+        xUnit: "Hz",
+        yLabel: "Gain",
+        yUnit: "dB",
+        signals: ["V(out)"],
+        data,
+        isRecommended: true,
+        priority: 1,
+      }}
+      height={height}
+    />
+  );
+}
+
+export function TransientChart({ data, height = 260 }: LegacyChartProps) {
+  return (
+    <DynamicWaveformChart
+      waveform={{
+        id: "legacy-transient",
+        title: "Transient Response",
+        chartType: "time_domain",
+        xLabel: "Time",
+        xUnit: "s",
+        yLabel: "Voltage",
+        yUnit: "V",
+        signals: ["V(out)"],
+        data,
+        isRecommended: true,
+        priority: 2,
+      }}
+      height={height}
+    />
+  );
+}
 
 export function MonteCarloChart({
   data,
-  label,
-  unit,
-  target,
+  label = "Distribution",
+  color = "#22d3ee",
 }: {
-  data: MonteCarloDataPoint[];
-  label: string;
-  unit: string;
-  target?: number;
+  data: { value: number; count: number }[];
+  label?: string;
+  color?: string;
 }) {
+  if (!data?.length) return null;
   return (
-    <div className="space-y-1">
-      <label className="text-[10px] text-zinc-600 font-mono uppercase tracking-widest">
-        Monte Carlo — {label}
-      </label>
-      <ResponsiveContainer width="100%" height={130}>
-        <BarChart data={data} margin={{ top: 4, right: 12, left: -12, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#27272a" vertical={false} />
-          <XAxis
-            dataKey="value"
-            tickFormatter={(v: number) => `${v}${unit}`}
-            tick={{ fill: "#52525b", fontSize: 9, fontFamily: "monospace" }}
-            axisLine={false}
-            tickLine={false}
-            interval="preserveStartEnd"
-          />
-          <YAxis
-            tick={{ fill: "#52525b", fontSize: 9, fontFamily: "monospace" }}
-            axisLine={false}
-            tickLine={false}
-          />
-          <Tooltip
-            content={
-              <CustomTooltip yUnit="samples" />
-            }
-          />
-          {target !== undefined && (
-            <ReferenceLine
-              x={target}
-              stroke="#ef4444"
-              strokeDasharray="4 2"
-              strokeWidth={1.5}
-            />
-          )}
-          <Bar dataKey="count" fill="#22d3ee" opacity={0.7} radius={[2, 2, 0, 0]} name="Count" />
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
+    <ResponsiveContainer width="100%" height={200}>
+      <BarChart data={data} margin={{ top: 8, right: 24, left: 12, bottom: 4 }}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#27272a" vertical={false} />
+        <XAxis dataKey="value" stroke="#52525b" tick={{ fill: "#71717a", fontSize: 10 }} tickFormatter={(v: number) => v.toFixed(1)} />
+        <YAxis stroke="#52525b" tick={{ fill: "#71717a", fontSize: 10 }} />
+        <Tooltip
+          contentStyle={{ backgroundColor: "#18181b", border: "1px solid #3f3f46", borderRadius: "12px", fontSize: "11px" }}
+          labelStyle={{ color: "#a1a1aa" }}
+        />
+        <Bar dataKey="count" fill={color} radius={[3, 3, 0, 0]} name={label} />
+      </BarChart>
+    </ResponsiveContainer>
   );
 }

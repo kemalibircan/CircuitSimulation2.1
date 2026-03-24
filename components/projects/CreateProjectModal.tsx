@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 // ──────────────────────────────────────────────────────────────────────────────
 
 const categories: { id: CircuitCategory; label: string; desc: string }[] = [
+  { id: "blank", label: "Blank Project", desc: "Start from scratch — no presets, fully customizable" },
   { id: "op-amp", label: "Operational Amplifier", desc: "Two-stage, folded cascode, etc." },
   { id: "filter", label: "Filter", desc: "Active/Passive continuous-time filters" },
   { id: "voltage-regulator", label: "Voltage Regulator", desc: "LDOs, DC-DC Converters" },

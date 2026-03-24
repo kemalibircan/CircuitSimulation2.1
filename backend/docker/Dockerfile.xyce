@@ -1,0 +1,20 @@
+# ──────────────────────────────────────────────────────────────
+# Xyce Docker image placeholder
+# Replace this with a real Xyce build once available.
+# ──────────────────────────────────────────────────────────────
+FROM debian:bookworm-slim
+
+# When you have access to a compiled Xyce binary:
+# COPY Xyce /usr/local/bin/Xyce
+# RUN chmod +x /usr/local/bin/Xyce
+
+WORKDIR /work
+
+# Placeholder — echoes a realistic Xyce-style output for dev/test
+RUN apt-get update && apt-get install -y --no-install-recommends python3 && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY docker/xyce_mock.py /usr/local/bin/Xyce_mock
+RUN chmod +x /usr/local/bin/Xyce_mock
+
+ENTRYPOINT ["/usr/local/bin/Xyce_mock"]

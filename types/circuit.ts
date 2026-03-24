@@ -3,6 +3,7 @@
 // ──────────────────────────────────────────────────────────────────────────────
 
 export type CircuitCategory =
+  | "blank"
   | "op-amp"
   | "current-mirror"
   | "differential-pair"
@@ -125,13 +126,48 @@ export interface MonteCarloDataPoint {
   count: number;
 }
 
+// ──────────────────────────────────────────────────────────────────────────────
+// Dynamic Waveforms & Signals
+// ──────────────────────────────────────────────────────────────────────────────
+
+export type ChartType = "time_domain" | "bode_magnitude" | "bode_phase" | "dc_sweep" | "bar" | "histogram";
+
+export interface WaveformData {
+  id: string;
+  title: string;
+  chartType: ChartType;
+  xLabel: string;
+  xUnit: string;
+  yLabel: string;
+  yUnit: string;
+  signals: string[];
+  data: ChartDataPoint[];
+  isRecommended: boolean;
+  priority: number;
+}
+
+export interface SignalInfo {
+  name: string;
+  type: "voltage" | "current";
+  unit: string;
+  nodeOrBranch: string;
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Simulation Results
+// ──────────────────────────────────────────────────────────────────────────────
+
 export interface SimulationResult {
   id: string;
   runId: string;
   metrics: SimulationMetric[];
-  acResponse: ChartDataPoint[]; // frequency (Hz) vs gain (dB)
-  phaseResponse: ChartDataPoint[]; // frequency (Hz) vs phase (deg)
-  transientResponse: ChartDataPoint[]; // time (ns) vs voltage (V)
+  waveforms: WaveformData[];
+  availableSignals: SignalInfo[];
+  topologyType?: string;
+  // Legacy fields
+  acResponse: ChartDataPoint[];
+  phaseResponse: ChartDataPoint[];
+  transientResponse: ChartDataPoint[];
   monteCarloGain?: MonteCarloDataPoint[];
   monteCarloPhaseMargin?: MonteCarloDataPoint[];
   simulatedAt: string;
